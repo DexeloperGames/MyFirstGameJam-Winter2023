@@ -1,5 +1,55 @@
-[gd_scene format=3 uid="uid://h0smqqer3w3c"]
+[gd_scene load_steps=10 format=3 uid="uid://h0smqqer3w3c"]
+
+[ext_resource type="PackedScene" uid="uid://chnmobndibgqb" path="res://player.tscn" id="1_75c4v"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fckta"]
+size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q73wb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tp1nc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xv8gi"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_af8di"]
+energy_multiplier = 3.33
+
+[sub_resource type="Sky" id="Sky_2jgmf"]
+sky_material = SubResource("PhysicalSkyMaterial_af8di")
+
+[sub_resource type="Environment" id="Environment_su05x"]
+background_mode = 2
+sky = SubResource("Sky_2jgmf")
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ouv4f"]
+auto_exposure_enabled = true
 
 [node name="Test Level" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_fckta")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_q73wb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71724, 0.412957, -2.96096)
+mesh = SubResource("BoxMesh_tp1nc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_xv8gi")
+
+[node name="Player" parent="." instance=ExtResource("1_75c4v")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_su05x")
+camera_attributes = SubResource("CameraAttributesPhysical_ouv4f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.608983, -0.711935, -0.349698, 0, -0.440879, 0.897566, -0.793183, -0.546603, -0.268488, 0, 5.1613, 0)
+shadow_enabled = true
+directional_shadow_blend_splits = true
