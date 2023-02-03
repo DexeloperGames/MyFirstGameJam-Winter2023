@@ -60,16 +60,16 @@ shadow_enabled = true
 directional_shadow_blend_splits = true
 
 [node name="hit_cube" parent="." instance=ExtResource("2_mfv3f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998322, -4.10223)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.998322, -4.10223)
 
 [node name="hit_dodecahedron" parent="." instance=ExtResource("3_24ecn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22019, 1.23802, 0.593993)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 2.22019, 1.23802, 0.593993)
 
 [node name="hit_octahedron" parent="." instance=ExtResource("4_y8d33")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84363, 1.28332, -3.89182)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.84363, 1.28332, -3.89182)
 
 [node name="hit_icohedron" parent="." instance=ExtResource("5_m6bwm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39126, 1.16466, 2.41306)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.39126, 1.16466, 2.41306)
 
 [node name="HitTetrahedron" parent="." instance=ExtResource("6_eu6nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23147, 1.4712, -0.0852153)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -4.23147, 1.4712, -0.0852153)
