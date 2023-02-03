@@ -62,3 +62,26 @@ fire={
 
 lights_and_shadows/directional_shadow/size=8192
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=5
+
+[shader_globals]
+
+primitive_color_0={
+"type": "color",
+"value": Color(1, 0, 0, 1)
+}
+primitive_color_1={
+"type": "color",
+"value": Color(0, 1, 0, 1)
+}
+primitive_color_2={
+"type": "color",
+"value": Color(0, 0, 1, 1)
+}
+primitive_color_3={
+"type": "color",
+"value": Color(1, 0, 1, 1)
+}
+primitive_color_4={
+"type": "color",
+"value": Color(0, 1, 1, 1)
+}

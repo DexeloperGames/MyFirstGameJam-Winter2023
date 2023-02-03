@@ -1,0 +1,101 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://duqpvkiddfsbq"]
+
+[sub_resource type="VisualShaderNodeIntParameter" id="VisualShaderNodeIntParameter_tul3g"]
+parameter_name = "Color_Index"
+hint = 1
+max = 4
+
+[sub_resource type="VisualShaderNodeGlobalExpression" id="VisualShaderNodeGlobalExpression_38l8u"]
+size = Vector2(1218.27, 260.166)
+expression = "global uniform vec4 primitive_color_0;
+global uniform vec4 primitive_color_1;
+global uniform vec4 primitive_color_2;
+global uniform vec4 primitive_color_3;
+global uniform vec4 primitive_color_4;
+
+//const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};"
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_2glbn"]
+size = Vector2(523.279, 391.096)
+expression = "
+switch (idx){
+	case 0: color = primitive_color_0; break;
+	case 1: color = primitive_color_1; break;
+	case 2: color = primitive_color_2; break;
+	case 3: color = primitive_color_3; break;
+	case 4: color = primitive_color_4; break;
+};
+"
+
+[resource]
+code = "shader_type spatial;
+uniform int Color_Index : hint_range(0, 4);
+
+
+// GlobalExpression:0
+	global uniform vec4 primitive_color_0;
+	global uniform vec4 primitive_color_1;
+	global uniform vec4 primitive_color_2;
+	global uniform vec4 primitive_color_3;
+	global uniform vec4 primitive_color_4;
+	
+	//const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};
+
+void fragment() {
+// IntParameter:2
+	int n_out2p0 = Color_Index;
+
+
+	vec4 n_out4p0;
+// Expression:4
+	n_out4p0 = vec4(0.0, 0.0, 0.0, 0.0);
+	{
+		
+		switch (n_out2p0){
+			case 0: n_out4p0 = primitive_color_0; break;
+			case 1: n_out4p0 = primitive_color_1; break;
+			case 2: n_out4p0 = primitive_color_2; break;
+			case 3: n_out4p0 = primitive_color_3; break;
+			case 4: n_out4p0 = primitive_color_4; break;
+		};
+		
+	}
+
+
+// Output:0
+	ALBEDO = vec3(n_out4p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-473.647, -4.62384)
+nodes/fragment/0/position = Vector2(620, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeIntParameter_tul3g")
+nodes/fragment/2/position = Vector2(-720, 220)
+nodes/fragment/3/node = SubResource("VisualShaderNodeGlobalExpression_38l8u")
+nodes/fragment/3/position = Vector2(-900, 620)
+nodes/fragment/3/size = Vector2(1218.27, 260.166)
+nodes/fragment/3/input_ports = ""
+nodes/fragment/3/output_ports = ""
+nodes/fragment/3/expression = "global uniform vec4 primitive_color_0;
+global uniform vec4 primitive_color_1;
+global uniform vec4 primitive_color_2;
+global uniform vec4 primitive_color_3;
+global uniform vec4 primitive_color_4;
+
+//const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};"
+nodes/fragment/4/node = SubResource("VisualShaderNodeExpression_2glbn")
+nodes/fragment/4/position = Vector2(-380, 180)
+nodes/fragment/4/size = Vector2(523.279, 391.096)
+nodes/fragment/4/input_ports = "0,1,idx;"
+nodes/fragment/4/output_ports = "0,5,color;"
+nodes/fragment/4/expression = "
+switch (idx){
+	case 0: color = primitive_color_0; break;
+	case 1: color = primitive_color_1; break;
+	case 2: color = primitive_color_2; break;
+	case 3: color = primitive_color_3; break;
+	case 4: color = primitive_color_4; break;
+};
+"
+nodes/fragment/connections = PackedInt32Array(4, 0, 0, 0, 2, 0, 4, 0)

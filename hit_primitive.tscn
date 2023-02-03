@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmemgttj286yx"]
+
+[ext_resource type="Script" path="res://HitPrimitive.gd" id="1_ri1rx"]
+
+[sub_resource type="Animation" id="Animation_heu2r"]
+resource_name = "Rotate Y"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p8e1x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rvb2p"]
+_data = {
+"RESET": SubResource("Animation_p8e1x"),
+"Rotate Y": SubResource("Animation_heu2r")
+}
+
+[node name="HitPrimitive" type="Node3D"]
+script = ExtResource("1_ri1rx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.31
+libraries = {
+"": SubResource("AnimationLibrary_rvb2p")
+}

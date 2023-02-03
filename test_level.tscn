@@ -1,6 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://h0smqqer3w3c"]
+[gd_scene load_steps=15 format=3 uid="uid://h0smqqer3w3c"]
 
 [ext_resource type="PackedScene" uid="uid://chnmobndibgqb" path="res://player.tscn" id="1_75c4v"]
+[ext_resource type="PackedScene" uid="uid://75e20pg10lfb" path="res://hit_cube.tscn" id="2_mfv3f"]
+[ext_resource type="PackedScene" uid="uid://ddhdjgo86njx3" path="res://hit_dodecahedron.tscn" id="3_24ecn"]
+[ext_resource type="PackedScene" uid="uid://dv1csc4yinppv" path="res://hit_octahedron.tscn" id="4_y8d33"]
+[ext_resource type="PackedScene" uid="uid://bco7owpaphh8c" path="res://hit_icohedron.tscn" id="5_m6bwm"]
+[ext_resource type="PackedScene" uid="uid://ekhauw6cqs7t" path="res://hit_tetrahedron.tscn" id="6_eu6nc"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fckta"]
 size = Vector2(20, 20)
@@ -53,3 +58,18 @@ camera_attributes = SubResource("CameraAttributesPhysical_ouv4f")
 transform = Transform3D(0.608983, -0.711935, -0.349698, 0, -0.440879, 0.897566, -0.793183, -0.546603, -0.268488, 0, 5.1613, 0)
 shadow_enabled = true
 directional_shadow_blend_splits = true
+
+[node name="hit_cube" parent="." instance=ExtResource("2_mfv3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998322, -4.10223)
+
+[node name="hit_dodecahedron" parent="." instance=ExtResource("3_24ecn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22019, 1.23802, 0.593993)
+
+[node name="hit_octahedron" parent="." instance=ExtResource("4_y8d33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84363, 1.28332, -3.89182)
+
+[node name="hit_icohedron" parent="." instance=ExtResource("5_m6bwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39126, 1.16466, 2.41306)
+
+[node name="HitTetrahedron" parent="." instance=ExtResource("6_eu6nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23147, 1.4712, -0.0852153)

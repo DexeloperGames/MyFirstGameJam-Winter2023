@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dv1csc4yinppv"]
+
+[ext_resource type="PackedScene" uid="uid://bmemgttj286yx" path="res://hit_primitive.tscn" id="1_ujsfx"]
+[ext_resource type="PackedScene" uid="uid://dhfsqarr05i1x" path="res://models/primitives/Octahedron.glb" id="2_50nhs"]
+[ext_resource type="Shader" uid="uid://duqpvkiddfsbq" path="res://hit_primitive_shader.tres" id="3_4qk2t"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jq4sk"]
+data = PackedVector3Array(0, 1, 0, 0, 0, -1, 1, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 1, -1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, -1, 0, 1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, -1, -1, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 1, 1, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3asy"]
+render_priority = 0
+shader = ExtResource("3_4qk2t")
+shader_parameter/Color_Index = 3
+
+[node name="hit_octahedron" node_paths=PackedStringArray("mesh") instance=ExtResource("1_ujsfx")]
+mesh = NodePath("Octahedron/Octahedron2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_jq4sk")
+
+[node name="Octahedron" parent="." index="2" instance=ExtResource("2_50nhs")]
+
+[node name="Octahedron2" parent="Octahedron" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_x3asy")
+
+[editable path="Octahedron"]

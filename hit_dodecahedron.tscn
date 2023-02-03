@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddhdjgo86njx3"]
+
+[ext_resource type="PackedScene" uid="uid://bmemgttj286yx" path="res://hit_primitive.tscn" id="1_6dy3r"]
+[ext_resource type="PackedScene" uid="uid://cdpt0aefcx05u" path="res://models/primitives/Dodecahedron.glb" id="2_4bf1t"]
+[ext_resource type="Shader" uid="uid://duqpvkiddfsbq" path="res://hit_primitive_shader.tres" id="3_spskp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vl1dw"]
+render_priority = 0
+shader = ExtResource("3_spskp")
+shader_parameter/Color_Index = 4
+
+[node name="hit_dodecahedron" instance=ExtResource("1_6dy3r")]
+
+[node name="Dodecahedron" parent="." index="2" instance=ExtResource("2_4bf1t")]
+
+[node name="Dodecahedron2" parent="Dodecahedron" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_vl1dw")
+
+[editable path="Dodecahedron"]
