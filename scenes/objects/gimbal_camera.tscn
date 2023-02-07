@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://le27qnfubobe"]
+[gd_scene load_steps=2 format=3 uid="uid://bnyqlodwo87r7"]
 
 [ext_resource type="Script" path="res://scenes/objects/gimbal_camera.gd" id="1_aflwo"]
 

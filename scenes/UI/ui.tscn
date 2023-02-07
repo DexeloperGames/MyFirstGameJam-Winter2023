@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf4bitk46go0r"]
+[gd_scene load_steps=4 format=3 uid="uid://ucmgm2cwju5r"]
 
 [ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_1xs14"]
 [ext_resource type="Shader" uid="uid://bfskh2cruix4l" path="res://scenes/UI/crosshair_shader.tres" id="2_yv6qr"]
