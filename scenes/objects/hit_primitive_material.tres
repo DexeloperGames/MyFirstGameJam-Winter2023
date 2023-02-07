@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" uid="uid://duqpvkiddfsbq" path="res://scenes/objects/hit_primitive_shader.tres" id="1_s7qdo"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_s7qdo")
+shader_parameter/Color_Index = 1

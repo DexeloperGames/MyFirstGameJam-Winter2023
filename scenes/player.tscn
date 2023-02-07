@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_vxhnb"]
+[ext_resource type="PackedScene" path="res://scenes/objects/gimbal_camera.tscn" id="2_dql28"]
+[ext_resource type="PackedScene" uid="uid://cf4bitk46go0r" path="res://scenes/UI/ui.tscn" id="3_n45gd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5nvy"]
+radius = 0.408
+height = 1.65
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera")]
+script = ExtResource("1_vxhnb")
+PlayerCamera = NodePath("Gimbal Camera")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.836749, 0)
+shape = SubResource("CapsuleShape3D_k5nvy")
+
+[node name="Gimbal Camera" parent="." instance=ExtResource("2_dql28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23544, 0)
+
+[node name="UI" parent="." instance=ExtResource("3_n45gd")]

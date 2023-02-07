@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://75e20pg10lfb"]
+
+[ext_resource type="PackedScene" uid="uid://bnogsjqsqqh7n" path="res://scenes/objects/hit_primitive.tscn" id="1_1me1j"]
+[ext_resource type="PackedScene" uid="uid://yuy73s31fnr2" path="res://models/primitives/Cube.glb" id="2_i7la0"]
+[ext_resource type="Shader" uid="uid://duqpvkiddfsbq" path="res://scenes/objects/hit_primitive_shader.tres" id="3_vqcmp"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q10wv"]
+data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4xah"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_vqcmp")
+shader_parameter/Color_Index = 1
+
+[node name="hit_cube" node_paths=PackedStringArray("mesh") instance=ExtResource("1_1me1j")]
+mesh = NodePath("Cube/Cube2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.57735, 0, 0, 0, 0.57735, 0, 0, 0, 0.57735, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_q10wv")
+
+[node name="Cube" parent="." index="2" instance=ExtResource("2_i7la0")]
+
+[node name="Cube2" parent="Cube" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_t4xah")
+
+[editable path="Cube"]
