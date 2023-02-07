@@ -1,5 +1,5 @@
 @tool
-class_name VisualShaderNodeBumpNode
+class_name VisualShaderNodeBlenderBumpNode
 extends VisualShaderNodeCustom
 
 
@@ -8,7 +8,7 @@ func _get_name():
 
 
 func _get_category():
-	return "Blender/Bump"
+	return "Blender/Vector/Bump"
 
 
 func _get_description():

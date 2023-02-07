@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vxhnb"]
 [ext_resource type="PackedScene" uid="uid://bnyqlodwo87r7" path="res://scenes/objects/gimbal_camera.tscn" id="2_dql28"]
-[ext_resource type="PackedScene" path="res://scenes/UI/ui.tscn" id="3_n45gd"]
+[ext_resource type="PackedScene" uid="uid://ucmgm2cwju5r" path="res://scenes/UI/ui.tscn" id="3_n45gd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5nvy"]
 radius = 0.408
