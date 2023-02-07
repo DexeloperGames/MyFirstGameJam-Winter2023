@@ -8,12 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://bco7owpaphh8c" path="res://scenes/objects/hit_icohedron.tscn" id="5_m6bwm"]
 [ext_resource type="PackedScene" uid="uid://btxrcfo4ccou5" path="res://scenes/objects/hit_tetrahedron.tscn" id="6_eu6nc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bbjex"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lm5j"]
 render_priority = 0
 shader = ExtResource("1_ce72t")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fckta"]
-material = SubResource("ShaderMaterial_bbjex")
+material = SubResource("ShaderMaterial_3lm5j")
 size = Vector2(20, 20)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_q73wb"]
@@ -25,12 +25,12 @@ size = Vector2(20, 20)
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_af8di"]
 energy_multiplier = 3.33
 
-[sub_resource type="Sky" id="Sky_2jgmf"]
+[sub_resource type="Sky" id="Sky_m6loo"]
 sky_material = SubResource("PhysicalSkyMaterial_af8di")
 
 [sub_resource type="Environment" id="Environment_su05x"]
 background_mode = 2
-sky = SubResource("Sky_2jgmf")
+sky = SubResource("Sky_m6loo")
 ssr_enabled = true
 ssr_max_steps = 256
 
@@ -43,6 +43,8 @@ auto_exposure_enabled = true
 mesh = SubResource("PlaneMesh_fckta")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_q73wb")
@@ -81,3 +83,6 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.39126, 1.16466, 2.41
 
 [node name="HitTetrahedron" parent="." instance=ExtResource("6_eu6nc")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -4.23147, 1.4712, -0.0852153)
+
+[editable path="Player"]
+[editable path="Player/Gimbal Camera"]

@@ -1,22 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnt5exiurrw1s"]
+[gd_scene load_steps=6 format=3 uid="uid://cnt5exiurrw1s"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vxhnb"]
 [ext_resource type="PackedScene" uid="uid://bnyqlodwo87r7" path="res://scenes/objects/gimbal_camera.tscn" id="2_dql28"]
+[ext_resource type="PackedScene" uid="uid://ci8x6w2kcyq4l" path="res://scenes/weapons/lazer_gun.tscn" id="3_hmxpx"]
 [ext_resource type="PackedScene" uid="uid://ucmgm2cwju5r" path="res://scenes/UI/ui.tscn" id="3_n45gd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5nvy"]
 radius = 0.408
-height = 1.65
+height = 1.84833
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera", "left_weapon", "right_weapon")]
+collision_layer = 3
+collision_mask = 3
+floor_block_on_wall = false
 script = ExtResource("1_vxhnb")
 PlayerCamera = NodePath("Gimbal Camera")
+left_weapon = NodePath("Gimbal Camera/Yaw/Pitch/Roll/Camera3D/LazerGun2")
+right_weapon = NodePath("Gimbal Camera/Yaw/Pitch/Roll/Camera3D/LazerGun")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.836749, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.941361, 0)
 shape = SubResource("CapsuleShape3D_k5nvy")
 
 [node name="Gimbal Camera" parent="." instance=ExtResource("2_dql28")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23544, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57, 0)
+
+[node name="LazerGun" parent="Gimbal Camera/Yaw/Pitch/Roll/Camera3D" index="0" node_paths=PackedStringArray("firing_from_node", "wielder") instance=ExtResource("3_hmxpx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.283021, -0.237323, -0.337621)
+firing_from_node = NodePath("..")
+relative_firing_direction = Vector3(0, 0, -1)
+wielder = NodePath("../../../../../..")
+
+[node name="LazerGun2" parent="Gimbal Camera/Yaw/Pitch/Roll/Camera3D" index="1" node_paths=PackedStringArray("firing_from_node", "wielder") instance=ExtResource("3_hmxpx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.283, -0.237, -0.338)
+firing_from_node = NodePath("..")
+relative_firing_direction = Vector3(0, 0, -1)
+wielder = NodePath("../../../../../..")
 
 [node name="UI" parent="." instance=ExtResource("3_n45gd")]
+
+[editable path="Gimbal Camera"]

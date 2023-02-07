@@ -1,19 +1,25 @@
 extends CharacterBody3D
 
 @export var PlayerCamera : GimbalCamera
+@export var left_weapon : Node
+@export var right_weapon : Node
+var weapon_idx = 0
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+var can_dash = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")*1.2
 
 
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
+	if not (is_on_floor()):
 		velocity.y -= gravity * delta
+	if is_on_wall():
+		velocity.y = max(velocity.y,0.0)
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or is_on_wall()):
 		velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -32,7 +38,10 @@ func _unhandled_input(event):
 		var rotation_vector = event.relative/Globals.Settings.MouseSensitivity
 		PlayerCamera.gimbal_rotation_degrees.y += -rotation_vector.y
 		rotation_degrees.y += -rotation_vector.x
-		
+	if event.is_action_pressed("fire"):
+		var weapon = [left_weapon,right_weapon][weapon_idx]
+		weapon.fire()
+		weapon_idx = (weapon_idx+1)%2
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
