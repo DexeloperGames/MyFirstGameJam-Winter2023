@@ -1,23 +1,33 @@
+
 @tool
 class_name VisualShaderNodeBlenderNoise
 extends VisualShaderNodeCustom
 
 
+
 func _get_name():
-	return "Noisei gafdTexture"
+	return "Noise Texture"
 
 
 func _get_category():
-	return "Blender/Texture/Noise asdfTexture/yesh"
+	return "Blender/Textures"
 
 
 func _get_description():
-	return "Generate fractal asdfPerlin noise"
+	return "Generate fractal Perlin noise"
+
+
+func _init():
+	prints(Time.get_datetime_string_from_system())
+	set_input_port_default_value(0, 3)
+	set_input_port_default_value(2, 5.0)
+	set_input_port_default_value(3, 2.0)
+	set_input_port_default_value(4, 0.5)
+	set_input_port_default_value(5, 0.0)
 
 
 func _get_return_icon_type():
 	return PORT_TYPE_VECTOR_3D
-	
 
 
 func _get_input_port_count():
@@ -45,7 +55,6 @@ func _get_input_port_type(port):
 			PORT_TYPE_SCALAR
 			][port]
 
-
 func _get_output_port_count():
 	return 2
 
@@ -57,11 +66,13 @@ func _get_output_port_name(port):
 func _get_output_port_type(port):
 	return [PORT_TYPE_SCALAR,PORT_TYPE_VECTOR_4D][port]
 
+
 func _get_global_code(mode):
 	return '#include "res://shaders/includes/blender_noise.gdshaderinc"'
+	
 
 func _get_code(input_vars, output_vars, mode, type):
-	return ""
+#	return ""
 	var dim_str = input_vars[0] if input_vars[0] else "3"
 	var vec_str = input_vars[1] if input_vars[1] else "vec4(UV,0.0,0.0)"
 	var scale_string = input_vars[2] if input_vars[2] else "5.0"

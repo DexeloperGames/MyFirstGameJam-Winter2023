@@ -1,6 +1,7 @@
-[gd_resource type="VisualShader" load_steps=19 format=3 uid="uid://c84sbc2fiop5q"]
+[gd_resource type="VisualShader" load_steps=22 format=3 uid="uid://c84sbc2fiop5q"]
 
 [ext_resource type="Script" path="res://shaders/custom nodes/blender_bump_node.gd" id="1_lr18e"]
+[ext_resource type="Script" path="res://shaders/custom nodes/blender_noise.gd" id="2_mehrb"]
 
 [sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_pwoqm"]
 initialized = true
@@ -33,6 +34,16 @@ op_type = 4
 input_name = "normal"
 
 [sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_65435"]
+initialized = true
+script = ExtResource("1_lr18e")
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_8qbcf"]
+default_input_values = [0, 3, 2, 5.0, 3, 2.0, 4, 0.5, 5, 0.0]
+initialized = true
+script = ExtResource("2_mehrb")
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_ra1cl"]
+default_input_values = [0, false, 1, 1.0, 2, 1.0]
 initialized = true
 script = ExtResource("1_lr18e")
 
@@ -152,7 +163,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-117, 232)
+graph_offset = Vector2(-339.282, -16.8758)
 nodes/fragment/0/position = Vector2(760, 180)
 nodes/fragment/2/node = SubResource("VisualShaderNodeCustom_65435")
 nodes/fragment/2/position = Vector2(-20, 340)
@@ -188,4 +199,8 @@ nodes/fragment/18/node = SubResource("VisualShaderNodeMix_yc1dc")
 nodes/fragment/18/position = Vector2(480, 500)
 nodes/fragment/19/node = SubResource("VisualShaderNodeInput_k421k")
 nodes/fragment/19/position = Vector2(120, 700)
+nodes/fragment/20/node = SubResource("VisualShaderNodeCustom_8qbcf")
+nodes/fragment/20/position = Vector2(400, 40)
+nodes/fragment/21/node = SubResource("VisualShaderNodeCustom_ra1cl")
+nodes/fragment/21/position = Vector2(420, 740)
 nodes/fragment/connections = PackedInt32Array(3, 0, 0, 0, 6, 0, 7, 0, 5, 0, 7, 1, 7, 0, 8, 0, 8, 0, 4, 0, 4, 0, 2, 3, 9, 0, 0, 3, 7, 0, 12, 0, 12, 0, 11, 0, 11, 0, 13, 0, 14, 0, 10, 2, 13, 0, 10, 3, 2, 0, 10, 4, 15, 0, 10, 1, 16, 0, 0, 2, 10, 0, 18, 0, 19, 0, 18, 1, 18, 0, 0, 8)

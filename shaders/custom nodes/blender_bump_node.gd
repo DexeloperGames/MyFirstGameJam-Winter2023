@@ -8,12 +8,16 @@ func _get_name():
 
 
 func _get_category():
-	return "Blender/Vector/Bump"
+	return "Blender/Vector"
 
 
 func _get_description():
 	return "Generate a perturbed normal from a height texture for bump mapping. Typically used for faking highly detailed surfaces"
 
+func _init():
+	set_input_port_default_value(0, false)
+	set_input_port_default_value(1, 1.0)
+	set_input_port_default_value(2, 1.0)
 
 func _get_return_icon_type():
 	return PORT_TYPE_VECTOR_3D
