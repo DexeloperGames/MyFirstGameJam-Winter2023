@@ -84,7 +84,7 @@ func _get_code(input_vars, output_vars, mode, type):
 	var o_color_str = output_vars[1]
 #	return "o_color_str = vec4(1.0);"
 	return """
-	switch(clamp({dim},1,4)):
+	switch(clamp({dim},1,4)){
 		case 1:
 			node_noise_texture_1d({vec}.xyz,{vec}.x,{scale},{detail},{rough},{distor},{o_fac},{o_col}); break;
 		case 2:
@@ -93,7 +93,8 @@ func _get_code(input_vars, output_vars, mode, type):
 			node_noise_texture_3d({vec}.xyz,0.0,{scale},{detail},{rough},{distor},{o_fac},{o_col}); break;
 		case 4:
 			node_noise_texture_4d({vec}.xyz,{vec}.w,{scale},{detail},{rough},{distor},{o_fac},{o_col}); break;
-	""".format({
+		}
+		""".format({
 		"dim":dim_str,
 		"vec":vec_str,
 		"scale":scale_string,
