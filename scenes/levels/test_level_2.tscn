@@ -1,9 +1,11 @@
-[gd_scene load_steps=43 format=3 uid="uid://cagdaet1ugamg"]
+[gd_scene load_steps=45 format=3 uid="uid://cagdaet1ugamg"]
 
 [ext_resource type="Script" path="res://shaders/custom nodes/blender_noise.gd" id="1_6paw0"]
 [ext_resource type="Script" path="res://shaders/custom nodes/blender_bump_node.gd" id="2_23f6f"]
 [ext_resource type="PackedScene" uid="uid://crg8nrgarqfnr" path="res://models/level assets/basic test.glb" id="3_20uwe"]
+[ext_resource type="Shader" uid="uid://btq3p28nkdtly" path="res://scenes/levels/basic_concrete.tres" id="4_1vmkk"]
 [ext_resource type="PackedScene" uid="uid://cnt5exiurrw1s" path="res://scenes/player.tscn" id="4_esd3j"]
+[ext_resource type="Texture2D" uid="uid://1osw0swqqc6l" path="res://textures/Concrete024_1K_NormalGL.jpg" id="5_j70cp"]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_2lsqm"]
 constant = 0.736
@@ -261,7 +263,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(1160.74, -31.4283)
+graph_offset = Vector2(-262.966, -24.4921)
 nodes/fragment/0/position = Vector2(2100, 200)
 nodes/fragment/5/node = SubResource("VisualShaderNodeInput_5c6b7")
 nodes/fragment/5/position = Vector2(-760, 180)
@@ -284,7 +286,7 @@ nodes/fragment/33/position = Vector2(400, 80)
 nodes/fragment/34/node = SubResource("VisualShaderNodeVectorLen_gc1j5")
 nodes/fragment/34/position = Vector2(720, 140)
 nodes/fragment/35/node = SubResource("VisualShaderNodeCustom_8l6lu")
-nodes/fragment/35/position = Vector2(760, 940)
+nodes/fragment/35/position = Vector2(1040, 840)
 nodes/fragment/36/node = SubResource("VisualShaderNodeRemap_hh50o")
 nodes/fragment/36/position = Vector2(920, 260)
 nodes/fragment/37/node = SubResource("VisualShaderNodeClamp_dvubr")
@@ -338,7 +340,11 @@ exposure_multiplier = 0.56
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nhmt"]
 render_priority = 0
-shader = SubResource("VisualShader_xnbjp")
+shader = ExtResource("4_1vmkk")
+shader_parameter/triplanar_scale = Vector3(1, 1, 1)
+shader_parameter/triplanar_offset = null
+shader_parameter/triplanar_sharpness = 0.5
+shader_parameter/TextureParameterTriplanar = ExtResource("5_j70cp")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ge6a7"]
 data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
