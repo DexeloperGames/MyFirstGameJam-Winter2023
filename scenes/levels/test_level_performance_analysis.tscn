@@ -1,16 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8owbsk51fgss"]
+[gd_scene load_steps=15 format=3 uid="uid://t206petld5tx"]
 
-[ext_resource type="Shader" uid="uid://btq3p28nkdtly" path="res://scenes/levels/basic_concrete.tres" id="1_3cdt5"]
-[ext_resource type="PackedScene" uid="uid://cnt5exiurrw1s" path="res://scenes/player.tscn" id="1_75c4v"]
-[ext_resource type="PackedScene" uid="uid://75e20pg10lfb" path="res://scenes/objects/hit_cube.tscn" id="2_mfv3f"]
-[ext_resource type="PackedScene" uid="uid://ddhdjgo86njx3" path="res://scenes/objects/hit_dodecahedron.tscn" id="3_24ecn"]
-[ext_resource type="PackedScene" uid="uid://dv1csc4yinppv" path="res://scenes/objects/hit_octahedron.tscn" id="4_y8d33"]
-[ext_resource type="PackedScene" uid="uid://bco7owpaphh8c" path="res://scenes/objects/hit_icohedron.tscn" id="5_m6bwm"]
-[ext_resource type="PackedScene" uid="uid://btxrcfo4ccou5" path="res://scenes/objects/hit_tetrahedron.tscn" id="6_eu6nc"]
+[ext_resource type="Shader" uid="uid://btq3p28nkdtly" path="res://scenes/levels/basic_concrete.tres" id="1_85vcp"]
+[ext_resource type="PackedScene" uid="uid://cnt5exiurrw1s" path="res://scenes/player.tscn" id="2_kypyu"]
+[ext_resource type="PackedScene" uid="uid://75e20pg10lfb" path="res://scenes/objects/hit_cube.tscn" id="3_yx7q6"]
+[ext_resource type="PackedScene" uid="uid://ddhdjgo86njx3" path="res://scenes/objects/hit_dodecahedron.tscn" id="4_4js4t"]
+[ext_resource type="PackedScene" uid="uid://dv1csc4yinppv" path="res://scenes/objects/hit_octahedron.tscn" id="5_7dp6f"]
+[ext_resource type="PackedScene" uid="uid://bco7owpaphh8c" path="res://scenes/objects/hit_icohedron.tscn" id="6_m5k6n"]
+[ext_resource type="PackedScene" uid="uid://btxrcfo4ccou5" path="res://scenes/objects/hit_tetrahedron.tscn" id="7_mefum"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3lm5j"]
 render_priority = 0
-shader = ExtResource("1_3cdt5")
+shader = ExtResource("1_85vcp")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fckta"]
 material = SubResource("ShaderMaterial_3lm5j")
@@ -22,21 +22,6 @@ margin = 0.555
 [sub_resource type="BoxMesh" id="BoxMesh_tp1nc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xv8gi"]
-
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_af8di"]
-energy_multiplier = 3.33
-
-[sub_resource type="Sky" id="Sky_m6loo"]
-sky_material = SubResource("PhysicalSkyMaterial_af8di")
-
-[sub_resource type="Environment" id="Environment_su05x"]
-background_mode = 2
-sky = SubResource("Sky_m6loo")
-ssr_enabled = true
-ssr_max_steps = 256
-
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_ouv4f"]
-auto_exposure_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_286ve"]
 
@@ -63,30 +48,26 @@ mesh = SubResource("BoxMesh_tp1nc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
 shape = SubResource("BoxShape3D_xv8gi")
 
-[node name="Player" parent="." instance=ExtResource("1_75c4v")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_su05x")
-camera_attributes = SubResource("CameraAttributesPhysical_ouv4f")
+[node name="Player" parent="." instance=ExtResource("2_kypyu")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.608983, -0.711935, -0.349698, 0, -0.440879, 0.897566, -0.793183, -0.546603, -0.268488, 0, 5.1613, 0)
 shadow_enabled = true
 directional_shadow_blend_splits = true
 
-[node name="hit_cube" parent="." instance=ExtResource("2_mfv3f")]
+[node name="hit_cube" parent="." instance=ExtResource("3_yx7q6")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.998322, -4.10223)
 
-[node name="hit_dodecahedron" parent="." instance=ExtResource("3_24ecn")]
+[node name="hit_dodecahedron" parent="." instance=ExtResource("4_4js4t")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 2.22019, 1.23802, 0.593993)
 
-[node name="hit_octahedron" parent="." instance=ExtResource("4_y8d33")]
+[node name="hit_octahedron" parent="." instance=ExtResource("5_7dp6f")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.84363, 1.28332, -3.89182)
 
-[node name="hit_icohedron" parent="." instance=ExtResource("5_m6bwm")]
+[node name="hit_icohedron" parent="." instance=ExtResource("6_m5k6n")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 3.19137, 1.16466, -3.06553)
 
-[node name="HitTetrahedron" parent="." instance=ExtResource("6_eu6nc")]
+[node name="HitTetrahedron" parent="." instance=ExtResource("7_mefum")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -4.23147, 1.4712, -0.0852153)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]

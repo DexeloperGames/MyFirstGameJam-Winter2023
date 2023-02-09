@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://yuy73s31fnr2" path="res://models/primitives/Cube.glb" id="2_i7la0"]
 [ext_resource type="Shader" uid="uid://duqpvkiddfsbq" path="res://scenes/objects/hit_primitive_shader.tres" id="3_vqcmp"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q10wv"]
-data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8j3fi"]
+points = PackedVector3Array(-1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t4xah"]
 resource_local_to_scene = true
@@ -13,12 +13,16 @@ render_priority = 0
 shader = ExtResource("3_vqcmp")
 shader_parameter/Color_Index = 1
 
-[node name="hit_cube" node_paths=PackedStringArray("mesh") instance=ExtResource("1_1me1j")]
+[node name="hit_cube" node_paths=PackedStringArray("mesh", "collision_shape") instance=ExtResource("1_1me1j")]
 mesh = NodePath("Cube/Cube2")
+score_points = 60
+face_position_array = Array[Vector3]([Vector3(0, 1, 0), Vector3(0, 0, 1), Vector3(-1, 0, 0), Vector3(0, -1, 0), Vector3(1, 0, 0), Vector3(0, 0, -1)])
+face_normal_array = Array[Vector3]([Vector3(0, 1, 0), Vector3(0, 0, 1), Vector3(-1, 0, 0), Vector3(0, -1, 0), Vector3(1, 0, 0), Vector3(0, 0, -1)])
+collision_shape = NodePath("StaticBody3D/CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(0.57735, 0, 0, 0, 0.57735, 0, 0, 0, 0.57735, 0, 0, 0)
-shape = SubResource("ConcavePolygonShape3D_q10wv")
+shape = SubResource("ConvexPolygonShape3D_8j3fi")
 
 [node name="Cube" parent="." index="2" instance=ExtResource("2_i7la0")]
 

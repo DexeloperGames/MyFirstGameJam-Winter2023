@@ -1,4 +1,5 @@
 extends Node3D
+class_name LazerGun
 
 @export var firing_from_node : Node3D
 @export var relative_firing_direction : Vector3 = Vector3.RIGHT
@@ -29,9 +30,9 @@ func _physics_process(delta):
 		targeting_object = null
 	get_tree().call_group("Debug Data Recievers", "recieve_current_target_for", self, targeting_object)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
-	pass
+#func _process(delta):
+#
+#	pass
 
 signal hit(object)
 
@@ -39,7 +40,8 @@ func fire():
 	SFX_Player.play()
 	if targeting_object:
 		emit_signal("hit", targeting_object)
-		
+		if (targeting_object as Node).has_method("hit"):
+			targeting_object.call("hit", self)
 		if (targeting_object.get_parent() as Node).has_method("hit"):
 			targeting_object.get_parent().call("hit", self)
 #		owner

@@ -1,10 +1,13 @@
-[gd_scene load_steps=44 format=3 uid="uid://cagdaet1ugamg"]
+[gd_scene load_steps=47 format=3 uid="uid://cagdaet1ugamg"]
 
 [ext_resource type="Script" path="res://shaders/custom nodes/blender_noise.gd" id="1_6paw0"]
 [ext_resource type="Script" path="res://shaders/custom nodes/blender_bump_node.gd" id="2_23f6f"]
 [ext_resource type="PackedScene" uid="uid://crg8nrgarqfnr" path="res://models/level assets/basic test.glb" id="3_20uwe"]
 [ext_resource type="PackedScene" uid="uid://cnt5exiurrw1s" path="res://scenes/player.tscn" id="4_esd3j"]
 [ext_resource type="Shader" uid="uid://c6nyovd14nd16" path="res://scenes/levels/procedual_concretefr.tres" id="4_oiggj"]
+[ext_resource type="PackedScene" uid="uid://dv1csc4yinppv" path="res://scenes/objects/hit_octahedron.tscn" id="6_3ev7n"]
+[ext_resource type="PackedScene" uid="uid://bco7owpaphh8c" path="res://scenes/objects/hit_icohedron.tscn" id="7_eg5vk"]
+[ext_resource type="PackedScene" uid="uid://75e20pg10lfb" path="res://scenes/objects/hit_cube.tscn" id="8_bd1qq"]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_2lsqm"]
 constant = 0.736
@@ -432,5 +435,14 @@ shape = SubResource("ConcavePolygonShape3D_t6t4k")
 
 [node name="Player" parent="." instance=ExtResource("4_esd3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.27018, 0, 0)
+
+[node name="hit_octahedron" parent="." instance=ExtResource("6_3ev7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6368, 1.38301, 2.51053)
+
+[node name="hit_icohedron" parent="." instance=ExtResource("7_eg5vk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.67084, 7.63636, -6.17151)
+
+[node name="hit_cube" parent="." instance=ExtResource("8_bd1qq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28483, 4.75436, 1.13877)
 
 [editable path="basic test"]

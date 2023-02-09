@@ -4,19 +4,23 @@
 [ext_resource type="PackedScene" uid="uid://dhfsqarr05i1x" path="res://models/primitives/Octahedron.glb" id="2_a2100"]
 [ext_resource type="Shader" uid="uid://duqpvkiddfsbq" path="res://scenes/objects/hit_primitive_shader.tres" id="3_nh38l"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jq4sk"]
-data = PackedVector3Array(0, 1, 0, 0, 0, -1, 1, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 1, -1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, -1, 0, 1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, -1, -1, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 1, 1, 0, 0)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xrhdo"]
+points = PackedVector3Array(0, 1, 0, 1, 0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 1, 0, -1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x3asy"]
 render_priority = 0
 shader = ExtResource("3_nh38l")
 shader_parameter/Color_Index = 3
 
-[node name="hit_octahedron" node_paths=PackedStringArray("mesh") instance=ExtResource("1_wspxe")]
+[node name="hit_octahedron" node_paths=PackedStringArray("mesh", "collision_shape") instance=ExtResource("1_wspxe")]
 mesh = NodePath("Octahedron/Octahedron2")
+score_points = 80
+face_position_array = Array[Vector3]([Vector3(0.333333, 0.333333, -0.333333), Vector3(-0.333333, 0.333333, -0.333333), Vector3(-0.333333, 0.333333, 0.333333), Vector3(0.333333, 0.333333, 0.333333), Vector3(0.333333, -0.333333, -0.333333), Vector3(-0.333333, -0.333333, -0.333333), Vector3(-0.333333, -0.333333, 0.333333), Vector3(0.333333, -0.333333, 0.333333)])
+face_normal_array = Array[Vector3]([Vector3(0.57735, 0.57735, -0.57735), Vector3(-0.57735, 0.57735, -0.57735), Vector3(-0.57735, 0.57735, 0.57735), Vector3(0.57735, 0.57735, 0.57735), Vector3(0.57735, -0.57735, -0.57735), Vector3(-0.57735, -0.57735, -0.57735), Vector3(-0.57735, -0.57735, 0.57735), Vector3(0.57735, -0.57735, 0.57735)])
+collision_shape = NodePath("StaticBody3D/CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_jq4sk")
+shape = SubResource("ConvexPolygonShape3D_xrhdo")
 
 [node name="Octahedron" parent="." index="2" instance=ExtResource("2_a2100")]
 

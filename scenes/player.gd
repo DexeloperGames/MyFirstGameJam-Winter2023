@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Player
 
 #@export var test : bool = true
 @export var PlayerCamera : Node
@@ -9,6 +10,7 @@ extends CharacterBody3D
 @export var base_speed : float = 5.0
 @export var dash_regen : float = 1.0
 @export var dash_drain : float = 1.0
+@export var score : int = 0
 var dash_amount : float = 1.0
 var weapon_idx = 0
 var SPEED = 5.0

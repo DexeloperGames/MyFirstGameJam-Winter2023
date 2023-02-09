@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://ds7x2skenspm6"]
+
+[ext_resource type="PackedScene" uid="uid://cnt5exiurrw1s" path="res://scenes/player.tscn" id="1_bentt"]
+[ext_resource type="PackedScene" uid="uid://bco7owpaphh8c" path="res://scenes/objects/hit_icohedron.tscn" id="2_nyomv"]
+[ext_resource type="PackedScene" uid="uid://ddhdjgo86njx3" path="res://scenes/objects/hit_dodecahedron.tscn" id="3_wktkb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_424pm"]
+size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_rp76n"]
+
+[node name="Performance Test" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_424pm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_rp76n")
+
+[node name="Player" parent="." instance=ExtResource("1_bentt")]
+
+[node name="hit_icohedron" parent="." instance=ExtResource("2_nyomv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658356, 1.55268, -2.96443)
+
+[node name="hit_dodecahedron" parent="." instance=ExtResource("3_wktkb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4693, 1.41407, -0.380187)
