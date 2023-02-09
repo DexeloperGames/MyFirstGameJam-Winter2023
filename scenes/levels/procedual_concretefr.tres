@@ -1,10 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://cagdaet1ugamg"]
+[gd_resource type="VisualShader" load_steps=26 format=3 uid="uid://c6nyovd14nd16"]
 
-[ext_resource type="Script" path="res://shaders/custom nodes/blender_noise.gd" id="1_6paw0"]
-[ext_resource type="Script" path="res://shaders/custom nodes/blender_bump_node.gd" id="2_23f6f"]
-[ext_resource type="PackedScene" uid="uid://crg8nrgarqfnr" path="res://models/level assets/basic test.glb" id="3_20uwe"]
-[ext_resource type="PackedScene" uid="uid://cnt5exiurrw1s" path="res://scenes/player.tscn" id="4_esd3j"]
-[ext_resource type="Shader" uid="uid://c6nyovd14nd16" path="res://scenes/levels/procedual_concretefr.tres" id="4_oiggj"]
+[ext_resource type="Script" path="res://shaders/custom nodes/blender_noise.gd" id="1_b7y5f"]
+[ext_resource type="Script" path="res://shaders/custom nodes/blender_bump_node.gd" id="2_gnscs"]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_2lsqm"]
 constant = 0.736
@@ -27,7 +24,7 @@ operator = 8
 [sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_8l6lu"]
 default_input_values = [0, 3, 2, 17.8, 3, 0.0, 4, 0.0, 5, 0.0]
 initialized = true
-script = ExtResource("1_6paw0")
+script = ExtResource("1_b7y5f")
 
 [sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_hh50o"]
 default_input_values = [1, 0.0, 2, 0.001, 3, 1.0, 4, 0.0]
@@ -78,14 +75,14 @@ input_name = "inv_view_matrix"
 [sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_cvr01"]
 default_input_values = [0, 3, 2, 17.8, 3, 0.0, 4, 1.0, 5, 0.0]
 initialized = true
-script = ExtResource("1_6paw0")
+script = ExtResource("1_b7y5f")
 
 [sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_vcs0v"]
 default_input_values = [0, false, 1, 1.0, 2, 0.1]
 initialized = true
-script = ExtResource("2_23f6f")
+script = ExtResource("2_gnscs")
 
-[sub_resource type="VisualShader" id="VisualShader_xnbjp"]
+[resource]
 code = "shader_type spatial;
 
 
@@ -262,7 +259,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-262.966, -24.4921)
+graph_offset = Vector2(490.607, -88.8087)
 nodes/fragment/0/position = Vector2(2100, 200)
 nodes/fragment/5/node = SubResource("VisualShaderNodeInput_5c6b7")
 nodes/fragment/5/position = Vector2(-760, 180)
@@ -285,7 +282,7 @@ nodes/fragment/33/position = Vector2(400, 80)
 nodes/fragment/34/node = SubResource("VisualShaderNodeVectorLen_gc1j5")
 nodes/fragment/34/position = Vector2(720, 140)
 nodes/fragment/35/node = SubResource("VisualShaderNodeCustom_8l6lu")
-nodes/fragment/35/position = Vector2(1040, 840)
+nodes/fragment/35/position = Vector2(760, 940)
 nodes/fragment/36/node = SubResource("VisualShaderNodeRemap_hh50o")
 nodes/fragment/36/position = Vector2(920, 260)
 nodes/fragment/37/node = SubResource("VisualShaderNodeClamp_dvubr")
@@ -311,126 +308,3 @@ nodes/fragment/47/position = Vector2(1540, 60)
 nodes/fragment/48/node = SubResource("VisualShaderNodeFloatOp_7g36m")
 nodes/fragment/48/position = Vector2(1762.65, 97.458)
 nodes/fragment/connections = PackedInt32Array(6, 0, 7, 0, 5, 0, 7, 1, 7, 0, 8, 1, 10, 0, 0, 3, 7, 0, 31, 0, 7, 0, 32, 0, 32, 0, 33, 0, 31, 0, 33, 1, 33, 0, 34, 0, 7, 0, 35, 1, 34, 0, 36, 0, 36, 0, 37, 0, 9, 0, 0, 8, 39, 0, 36, 2, 8, 0, 9, 3, 41, 0, 40, 2, 34, 0, 40, 0, 42, 0, 8, 3, 37, 0, 8, 4, 43, 0, 44, 0, 45, 0, 43, 2, 34, 0, 43, 0, 40, 0, 46, 0, 46, 0, 42, 1, 44, 0, 47, 0, 47, 0, 48, 0, 48, 0, 9, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfvtc"]
-render_priority = 0
-shader = SubResource("VisualShader_xnbjp")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_1lfb0"]
-material = SubResource("ShaderMaterial_rfvtc")
-size = Vector2(50, 50)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_pv7r3"]
-
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_si0dj"]
-energy_multiplier = 3.33
-
-[sub_resource type="Sky" id="Sky_h4odh"]
-sky_material = SubResource("PhysicalSkyMaterial_si0dj")
-
-[sub_resource type="Environment" id="Environment_5ytq3"]
-background_mode = 2
-sky = SubResource("Sky_h4odh")
-ssr_enabled = true
-ssr_max_steps = 256
-
-[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_w6tv6"]
-exposure_multiplier = 0.56
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3nhmt"]
-render_priority = 0
-shader = ExtResource("4_oiggj")
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ge6a7"]
-data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4v8gr"]
-data = PackedVector3Array(1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_c7pgy"]
-data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fg3sh"]
-data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qy1rn"]
-data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t6t4k"]
-data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
-
-[node name="Test Level 2" type="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_1lfb0")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("WorldBoundaryShape3D_pv7r3")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5ytq3")
-camera_attributes = SubResource("CameraAttributesPhysical_w6tv6")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.592402, -0.79473, -0.132152, -0.141141, -0.263873, 0.954175, -0.793183, -0.546603, -0.268488, 0, 5.1613, 0)
-shadow_enabled = true
-directional_shadow_blend_splits = true
-
-[node name="basic test" parent="." instance=ExtResource("3_20uwe")]
-
-[node name="Cube" parent="basic test" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_3nhmt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="basic test/Cube" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="basic test/Cube/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ge6a7")
-
-[node name="Cube001" parent="basic test" index="1"]
-surface_material_override/0 = SubResource("ShaderMaterial_3nhmt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="basic test/Cube001" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="basic test/Cube001/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_4v8gr")
-
-[node name="Cube002" parent="basic test" index="2"]
-surface_material_override/0 = SubResource("ShaderMaterial_3nhmt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="basic test/Cube002" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="basic test/Cube002/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_c7pgy")
-
-[node name="Cube003" parent="basic test" index="3"]
-surface_material_override/0 = SubResource("ShaderMaterial_3nhmt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="basic test/Cube003" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="basic test/Cube003/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_fg3sh")
-
-[node name="Cube004" parent="basic test" index="4"]
-surface_material_override/0 = SubResource("ShaderMaterial_3nhmt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="basic test/Cube004" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="basic test/Cube004/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_qy1rn")
-
-[node name="Cube005" parent="basic test" index="5"]
-surface_material_override/0 = SubResource("ShaderMaterial_3nhmt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="basic test/Cube005" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="basic test/Cube005/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_t6t4k")
-
-[node name="Player" parent="." instance=ExtResource("4_esd3j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.27018, 0, 0)
-
-[editable path="basic test"]

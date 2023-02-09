@@ -8,6 +8,9 @@ class_name GimbalCamera
 		update_rotation()
 # Called when the node enters the scene tree for the first time.
 
+var camera_global_transform : Transform3D:
+	get:
+		return $Yaw/Pitch/Roll/Camera3D.global_transform
 func update_rotation():
 	$Yaw.rotation_degrees.y = gimbal_rotation_degrees.x
 	$Yaw/Pitch.rotation_degrees.x = gimbal_rotation_degrees.y
