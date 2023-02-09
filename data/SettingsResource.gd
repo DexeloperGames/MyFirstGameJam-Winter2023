@@ -5,3 +5,5 @@ class_name SettingsResource
 
 func _init(m_sens = 7.7):
 	MouseSensitivity = m_sens
+	print("yeah")
+	

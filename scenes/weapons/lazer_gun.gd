@@ -30,6 +30,7 @@ func _physics_process(delta):
 	get_tree().call_group("Debug Data Recievers", "recieve_current_target_for", self, targeting_object)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	pass
 
 signal hit(object)

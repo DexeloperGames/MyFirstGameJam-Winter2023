@@ -14,6 +14,8 @@ func update_rotation():
 	$Yaw.rotation_degrees.y = gimbal_rotation_degrees.x
 	$Yaw/Pitch.rotation_degrees.x = gimbal_rotation_degrees.y
 	$Yaw/Pitch/Roll.rotation_degrees.z = gimbal_rotation_degrees.z
+	
+	
 	pass
 
 func _ready():

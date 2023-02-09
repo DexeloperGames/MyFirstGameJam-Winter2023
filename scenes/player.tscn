@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnt5exiurrw1s"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_vxhnb"]
-[ext_resource type="PackedScene" uid="uid://bnyqlodwo87r7" path="res://gimbal_camera.tscn" id="2_dql28"]
+[ext_resource type="PackedScene" uid="uid://bnyqlodwo87r7" path="res://scenes/objects/gimbal_camera.tscn" id="2_dql28"]
 [ext_resource type="PackedScene" uid="uid://ci8x6w2kcyq4l" path="res://scenes/weapons/lazer_gun.tscn" id="3_hmxpx"]
 [ext_resource type="PackedScene" uid="uid://ucmgm2cwju5r" path="res://scenes/UI/ui.tscn" id="3_n45gd"]
 

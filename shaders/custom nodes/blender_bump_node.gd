@@ -18,6 +18,7 @@ func _init():
 	set_input_port_default_value(0, false)
 	set_input_port_default_value(1, 1.0)
 	set_input_port_default_value(2, 1.0)
+	
 
 func _get_return_icon_type():
 	return PORT_TYPE_VECTOR_3D

@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-@export var PlayerCamera : GimbalCamera
+#@export var test : bool = true
+@export var PlayerCamera : Node
 @export var left_weapon : Node
 @export var right_weapon : Node
 @export var kinetic_acceleration : float = 1.0

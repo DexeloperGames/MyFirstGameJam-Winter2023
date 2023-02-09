@@ -11,6 +11,7 @@ func _ready():
 func _process(delta):
 #	$Label.text = str(Performance.TIME_FPS)
 	$"VBoxContainer/Label".text = str(1/delta)
+	
 	pass
 
 var target_dict : Dictionary = {}
