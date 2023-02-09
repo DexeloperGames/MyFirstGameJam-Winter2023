@@ -38,7 +38,8 @@ signal hit(object)
 
 func fire():
 	SFX_Player.play()
-	if targeting_object:
+#	is_instance_valid()
+	if targeting_object and is_instance_valid(targeting_object):
 		emit_signal("hit", targeting_object)
 		if (targeting_object as Node).has_method("hit"):
 			targeting_object.call("hit", self)

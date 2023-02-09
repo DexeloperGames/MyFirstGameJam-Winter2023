@@ -1,0 +1,136 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://dgh2gd18xhyku"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ff2li"]
+parameter_name = "Text_Color"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeIntParameter" id="VisualShaderNodeIntParameter_jpiha"]
+parameter_name = "Color_Index"
+hint = 1
+max = 4
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_obrit"]
+size = Vector2(523.279, 391.096)
+expression = "
+switch (idx){
+	case 0: color = primitive_color_0; break;
+	case 1: color = primitive_color_1; break;
+	case 2: color = primitive_color_2; break;
+	case 3: color = primitive_color_3; break;
+	case 4: color = primitive_color_4; break;
+};
+"
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_guxqa"]
+default_input_values = [0, true, 1, Vector3(1, 1, 1), 2, Vector3(0, 0, 0)]
+op_type = 4
+
+[sub_resource type="VisualShaderNodeGlobalExpression" id="VisualShaderNodeGlobalExpression_edrr2"]
+size = Vector2(1218.27, 260.166)
+expression = "global uniform vec4 primitive_color_0;
+global uniform vec4 primitive_color_1;
+global uniform vec4 primitive_color_2;
+global uniform vec4 primitive_color_3;
+global uniform vec4 primitive_color_4;
+
+//const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};"
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_ar2do"]
+parameter_name = "Use_Color_Index"
+default_value_enabled = true
+default_value = true
+
+[resource]
+resource_local_to_scene = true
+code = "shader_type spatial;
+uniform bool Use_Color_Index = true;
+uniform int Color_Index : hint_range(0, 4);
+uniform vec4 Text_Color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+// GlobalExpression:0
+	global uniform vec4 primitive_color_0;
+	global uniform vec4 primitive_color_1;
+	global uniform vec4 primitive_color_2;
+	global uniform vec4 primitive_color_3;
+	global uniform vec4 primitive_color_4;
+	
+	//const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};
+
+void fragment() {
+// BooleanParameter:7
+	bool n_out7p0 = Use_Color_Index;
+
+
+// IntParameter:3
+	int n_out3p0 = Color_Index;
+
+
+	vec4 n_out4p0;
+// Expression:4
+	n_out4p0 = vec4(0.0, 0.0, 0.0, 0.0);
+	{
+		
+		switch (n_out3p0){
+			case 0: n_out4p0 = primitive_color_0; break;
+			case 1: n_out4p0 = primitive_color_1; break;
+			case 2: n_out4p0 = primitive_color_2; break;
+			case 3: n_out4p0 = primitive_color_3; break;
+			case 4: n_out4p0 = primitive_color_4; break;
+		};
+		
+	}
+
+
+// ColorParameter:2
+	vec4 n_out2p0 = Text_Color;
+
+
+	vec3 n_out5p0;
+// Switch:5
+	n_out5p0 = mix(vec3(n_out2p0.xyz), vec3(n_out4p0.xyz), float(n_out7p0));
+
+
+// Output:0
+	ALBEDO = n_out5p0;
+
+
+}
+"
+graph_offset = Vector2(-459.352, 101.466)
+nodes/fragment/0/position = Vector2(640, 260)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_ff2li")
+nodes/fragment/2/position = Vector2(-180, 80)
+nodes/fragment/3/node = SubResource("VisualShaderNodeIntParameter_jpiha")
+nodes/fragment/3/position = Vector2(-560, 400)
+nodes/fragment/4/node = SubResource("VisualShaderNodeExpression_obrit")
+nodes/fragment/4/position = Vector2(-260, 500)
+nodes/fragment/4/size = Vector2(523.279, 391.096)
+nodes/fragment/4/input_ports = "0,1,idx;"
+nodes/fragment/4/output_ports = "0,5,color;"
+nodes/fragment/4/expression = "
+switch (idx){
+	case 0: color = primitive_color_0; break;
+	case 1: color = primitive_color_1; break;
+	case 2: color = primitive_color_2; break;
+	case 3: color = primitive_color_3; break;
+	case 4: color = primitive_color_4; break;
+};
+"
+nodes/fragment/5/node = SubResource("VisualShaderNodeSwitch_guxqa")
+nodes/fragment/5/position = Vector2(320, 300)
+nodes/fragment/6/node = SubResource("VisualShaderNodeGlobalExpression_edrr2")
+nodes/fragment/6/position = Vector2(-860, 860)
+nodes/fragment/6/size = Vector2(1218.27, 260.166)
+nodes/fragment/6/input_ports = ""
+nodes/fragment/6/output_ports = ""
+nodes/fragment/6/expression = "global uniform vec4 primitive_color_0;
+global uniform vec4 primitive_color_1;
+global uniform vec4 primitive_color_2;
+global uniform vec4 primitive_color_3;
+global uniform vec4 primitive_color_4;
+
+//const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};"
+nodes/fragment/7/node = SubResource("VisualShaderNodeBooleanParameter_ar2do")
+nodes/fragment/7/position = Vector2(-80, 220)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 2, 0, 5, 2, 4, 0, 5, 1, 5, 0, 0, 0, 7, 0, 5, 0)

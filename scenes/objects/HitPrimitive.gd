@@ -7,8 +7,9 @@ class_name HitPrimitive
 @export var face_position_array : Array[Vector3]
 @export var face_normal_array : Array[Vector3]
 @export var collision_shape : CollisionShape3D
-@export var particle_speed : float = 0
-var hit_particle = load("res://scenes/objects/hit_particle.tscn")
+@export var particle_speed : float = 1
+var hit_particle = preload("res://scenes/objects/hit_particle.tscn")
+var hit_text = preload("res://scenes/objects/cool_hit_text.tscn")
 #@export var thing : Array[Vector3]
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,10 +38,21 @@ func spawn_hit_particles():
 #		new_hit_particle.scale = Vector3(0.1, 0.1, 0.1)
 		new_hit_particle.global_scale(Vector3(0.1,0.1,0.1))
 
+func spawn_hit_text(facing_position = Vector3.ZERO):
+	var new_hit_text = hit_text.instantiate()
+	new_hit_text.number = score_points
+	new_hit_text.color_index = mesh.get_surface_override_material(0).get_shader_parameter("Color_Index")
+	add_sibling(new_hit_text)
+	new_hit_text.global_position = global_position
+	(new_hit_text as Node3D).look_at(facing_position)
+
 func hit(thing):
 	print("yeahthing")
+	var facing = Vector3.ZERO
 	if thing is LazerGun:
 		if thing.wielder is Player:
 			thing.wielder.score += score_points
+			facing = thing.wielder.global_position
 	spawn_hit_particles()
+	spawn_hit_text(facing)
 	queue_free()

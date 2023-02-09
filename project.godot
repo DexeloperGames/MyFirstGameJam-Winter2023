@@ -13,7 +13,6 @@ config_version=5
 config/name="Primitives Hunter"
 run/main_scene="res://scenes/levels/test_level_2.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,7 +24,7 @@ Globals="*res://data/globals.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=4
-window/size/borderless=true
+window/vsync/vsync_mode=0
 
 [input]
 
