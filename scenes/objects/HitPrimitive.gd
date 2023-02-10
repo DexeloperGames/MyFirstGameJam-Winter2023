@@ -8,6 +8,7 @@ class_name HitPrimitive
 @export var face_normal_array : Array[Vector3]
 @export var collision_shape : CollisionShape3D
 @export var particle_speed : float = 1
+@export var primitive_id : int = 0
 var hit_particle = preload("res://scenes/objects/hit_particle.tscn")
 var hit_text = preload("res://scenes/objects/cool_hit_text.tscn")
 #@export var thing : Array[Vector3]
@@ -56,4 +57,5 @@ func hit(thing):
 	spawn_hit_particles()
 	spawn_hit_text(facing)
 	mesh.set_surface_override_material(0, null)
+	get_tree().call_group("Primitive Hit Recievers", "recieve_primitive_hit", primitive_id)
 	queue_free()

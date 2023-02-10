@@ -10,7 +10,7 @@ points = PackedVector3Array(-0.894425, -0.447338, -5.96046e-08, 0, -1, -5.96046e
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avi4f"]
 render_priority = 0
 shader = ExtResource("3_hlfoi")
-shader_parameter/Color_Index = 0
+shader_parameter/Color_Index = 4
 
 [node name="hit_icohedron" node_paths=PackedStringArray("mesh", "collision_shape") instance=ExtResource("1_2xpo6")]
 mesh = NodePath("Icohedron/Icohedron2")
@@ -18,6 +18,7 @@ score_points = 200
 face_position_array = Array[Vector3]([Vector3(0.149072, -0.631477, 0.458787), Vector3(0.4824, -0.631477, 0), Vector3(-0.39027, -0.631477, 0.283547), Vector3(-0.39027, -0.631477, -0.283547), Vector3(0.149072, -0.631477, -0.458787), Vector3(0.780542, -0.149072, 0), Vector3(0.2412, -0.149072, 0.742333), Vector3(-0.63147, -0.149072, 0.458787), Vector3(-0.63147, -0.149072, -0.458787), Vector3(0.2412, -0.149072, -0.742333), Vector3(0.63147, 0.149072, 0.458787), Vector3(-0.2412, 0.149072, 0.742333), Vector3(-0.780542, 0.149072, 0), Vector3(-0.2412, 0.149072, -0.742333), Vector3(0.63147, 0.149072, -0.458787), Vector3(0.39027, 0.631477, 0.283547), Vector3(-0.149072, 0.631477, 0.458787), Vector3(-0.4824, 0.631477, 0), Vector3(-0.149072, 0.631477, -0.458787), Vector3(0.39027, 0.631477, -0.283547)])
 face_normal_array = Array[Vector3]([Vector3(0.187597, -0.794651, 0.577354), Vector3(0.607065, -0.794652, 0), Vector3(-0.491122, -0.794652, 0.356829), Vector3(-0.491122, -0.794652, -0.356829), Vector3(0.187597, -0.794651, -0.577354), Vector3(0.982246, -0.187597, 0), Vector3(0.303536, -0.187589, 0.934171), Vector3(-0.794649, -0.187587, 0.577359), Vector3(-0.794649, -0.187587, -0.577359), Vector3(0.303536, -0.187589, -0.934171), Vector3(0.794649, 0.187587, 0.577359), Vector3(-0.303536, 0.187589, 0.934171), Vector3(-0.982246, 0.187597, 0), Vector3(-0.303536, 0.187589, -0.934171), Vector3(0.794649, 0.187587, -0.577359), Vector3(0.491122, 0.794652, 0.356829), Vector3(-0.187597, 0.794651, 0.577354), Vector3(-0.607065, 0.794652, 0), Vector3(-0.187597, 0.794651, -0.577354), Vector3(0.491122, 0.794652, -0.356829)])
 collision_shape = NodePath("StaticBody3D/CollisionShape3D")
+primitive_id = 4
 
 [node name="StaticBody3D" parent="." index="0"]
 collision_layer = 3

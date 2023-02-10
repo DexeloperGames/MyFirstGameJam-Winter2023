@@ -1,0 +1,102 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://dwtsie8acu0c8"]
+
+[sub_resource type="VisualShaderNodeIntParameter" id="VisualShaderNodeIntParameter_ohblk"]
+parameter_name = "Color_Index"
+hint = 1
+max = 4
+
+[sub_resource type="VisualShaderNodeGlobalExpression" id="VisualShaderNodeGlobalExpression_lpke8"]
+size = Vector2(1218.27, 260.166)
+expression = "global uniform vec4 primitive_color_0;
+global uniform vec4 primitive_color_1;
+global uniform vec4 primitive_color_2;
+global uniform vec4 primitive_color_3;
+global uniform vec4 primitive_color_4;
+
+//const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};"
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_yswkn"]
+size = Vector2(523.279, 391.096)
+expression = "
+switch (idx){
+	case 0: color = primitive_color_0; break;
+	case 1: color = primitive_color_1; break;
+	case 2: color = primitive_color_2; break;
+	case 3: color = primitive_color_3; break;
+	case 4: color = primitive_color_4; break;
+};
+"
+
+[resource]
+code = "shader_type canvas_item;
+uniform int Color_Index : hint_range(0, 4);
+
+
+// GlobalExpression:0
+	global uniform vec4 primitive_color_0;
+	global uniform vec4 primitive_color_1;
+	global uniform vec4 primitive_color_2;
+	global uniform vec4 primitive_color_3;
+	global uniform vec4 primitive_color_4;
+	
+	//const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};
+
+void fragment() {
+// IntParameter:3
+	int n_out3p0 = Color_Index;
+
+
+	vec4 n_out5p0;
+// Expression:5
+	n_out5p0 = vec4(0.0, 0.0, 0.0, 0.0);
+	{
+		
+		switch (n_out3p0){
+			case 0: n_out5p0 = primitive_color_0; break;
+			case 1: n_out5p0 = primitive_color_1; break;
+			case 2: n_out5p0 = primitive_color_2; break;
+			case 3: n_out5p0 = primitive_color_3; break;
+			case 4: n_out5p0 = primitive_color_4; break;
+		};
+		
+	}
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out5p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-17.0353, -50.0034)
+mode = 1
+flags/light_only = false
+nodes/fragment/3/node = SubResource("VisualShaderNodeIntParameter_ohblk")
+nodes/fragment/3/position = Vector2(-800, 160)
+nodes/fragment/4/node = SubResource("VisualShaderNodeGlobalExpression_lpke8")
+nodes/fragment/4/position = Vector2(-980, 560)
+nodes/fragment/4/size = Vector2(1218.27, 260.166)
+nodes/fragment/4/input_ports = ""
+nodes/fragment/4/output_ports = ""
+nodes/fragment/4/expression = "global uniform vec4 primitive_color_0;
+global uniform vec4 primitive_color_1;
+global uniform vec4 primitive_color_2;
+global uniform vec4 primitive_color_3;
+global uniform vec4 primitive_color_4;
+
+//const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};"
+nodes/fragment/5/node = SubResource("VisualShaderNodeExpression_yswkn")
+nodes/fragment/5/position = Vector2(-460, 120)
+nodes/fragment/5/size = Vector2(523.279, 391.096)
+nodes/fragment/5/input_ports = "0,1,idx;"
+nodes/fragment/5/output_ports = "0,5,color;"
+nodes/fragment/5/expression = "
+switch (idx){
+	case 0: color = primitive_color_0; break;
+	case 1: color = primitive_color_1; break;
+	case 2: color = primitive_color_2; break;
+	case 3: color = primitive_color_3; break;
+	case 4: color = primitive_color_4; break;
+};
+"
+nodes/fragment/connections = PackedInt32Array(3, 0, 5, 0, 5, 0, 0, 0)

@@ -1,0 +1,140 @@
+[gd_scene load_steps=11 format=3 uid="uid://b55wflbt3egec"]
+
+[ext_resource type="Script" path="res://scenes/objects/level_room_door.gd" id="1_vk1f6"]
+[ext_resource type="Shader" uid="uid://igpdhgipu26x" path="res://scenes/objects/level_room_door.tres" id="2_ebbli"]
+[ext_resource type="PackedScene" uid="uid://c3y6jdl82vwgo" path="res://scenes/UI/remaining_primitives_ui.tscn" id="3_2clkr"]
+[ext_resource type="FontFile" uid="uid://by8b56472lgfo" path="res://fonts/arialbd.ttf" id="4_nb11x"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_wn8x4"]
+size = Vector2(4.71, 5.153)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6weuv"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qelj3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_ebbli")
+shader_parameter/Opened = false
+shader_parameter/Door_Screen = SubResource("ViewportTexture_6weuv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_phljx"]
+size = Vector3(4.71, 5.153, 0.110491)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vjsdf"]
+resource_local_to_scene = true
+font = ExtResource("4_nb11x")
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_ks3ek"]
+resource_local_to_scene = true
+font = ExtResource("4_nb11x")
+font_size = 43
+
+[node name="Level Room Door" type="Node3D" node_paths=PackedStringArray("primitives_display") groups=["Primitive Hit Recievers"]]
+script = ExtResource("1_vk1f6")
+primitives_display = NodePath("SubViewport/Remaining Primitives UI")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_wn8x4")
+surface_material_override/0 = SubResource("ShaderMaterial_qelj3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_phljx")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(128, 128)
+render_target_update_mode = 4
+
+[node name="Remaining Primitives UI" parent="SubViewport" instance=ExtResource("3_2clkr")]
+container_array = Array[Node]([Object(HBoxContainer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":3,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","alignment":0,"script":null)
+, Object(HBoxContainer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":3,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","alignment":0,"script":null)
+, Object(HBoxContainer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":3,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","alignment":0,"script":null)
+, Object(HBoxContainer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":3,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","alignment":0,"script":null)
+, Object(HBoxContainer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":3,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":1,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","alignment":0,"script":null)
+])
+label_settings = SubResource("LabelSettings_vjsdf")
+display_counts = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 0), Vector2i(0, 0), Vector2i(0, 0), Vector2i(0, 0)])
+
+[node name="Panel" parent="SubViewport/Remaining Primitives UI" index="0"]
+visible = false
+
+[node name="Tetrahedron Count Container" parent="SubViewport/Remaining Primitives UI/VBoxContainer" index="0"]
+visible = false
+
+[node name="SubViewport" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Tetrahedron Count Container/SubViewportContainer" index="0"]
+size = Vector2i(16, 16)
+render_target_update_mode = 0
+
+[node name="Tetrahedron" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Tetrahedron Count Container/SubViewportContainer/SubViewport" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Label" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Tetrahedron Count Container" index="1"]
+text = "0/0"
+label_settings = SubResource("LabelSettings_ks3ek")
+
+[node name="Cube Count Container" parent="SubViewport/Remaining Primitives UI/VBoxContainer" index="1"]
+visible = false
+
+[node name="SubViewport" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Cube Count Container/SubViewportContainer" index="0"]
+size = Vector2i(16, 16)
+render_target_update_mode = 0
+
+[node name="Cube" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Cube Count Container/SubViewportContainer/SubViewport" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="Label" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Cube Count Container" index="1"]
+text = "0/0"
+label_settings = SubResource("LabelSettings_ks3ek")
+
+[node name="Octahedron Count Container" parent="SubViewport/Remaining Primitives UI/VBoxContainer" index="2"]
+visible = false
+
+[node name="SubViewport" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Octahedron Count Container/SubViewportContainer" index="0"]
+size = Vector2i(16, 16)
+render_target_update_mode = 0
+
+[node name="Octahedron" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Octahedron Count Container/SubViewportContainer/SubViewport" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Label" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Octahedron Count Container" index="1"]
+text = "0/0"
+label_settings = SubResource("LabelSettings_ks3ek")
+
+[node name="Dodecahedron Count Container" parent="SubViewport/Remaining Primitives UI/VBoxContainer" index="3"]
+visible = false
+
+[node name="SubViewport" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Dodecahedron Count Container/SubViewportContainer" index="0"]
+size = Vector2i(16, 16)
+render_target_update_mode = 0
+
+[node name="Dodecahedron" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Dodecahedron Count Container/SubViewportContainer/SubViewport" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Label" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Dodecahedron Count Container" index="1"]
+text = "0/0"
+label_settings = SubResource("LabelSettings_ks3ek")
+
+[node name="Icohedron Count Container" parent="SubViewport/Remaining Primitives UI/VBoxContainer" index="4"]
+visible = false
+
+[node name="SubViewport" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Icohedron Count Container/SubViewportContainer" index="0"]
+size = Vector2i(16, 16)
+render_target_update_mode = 0
+
+[node name="Icohedron" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Icohedron Count Container/SubViewportContainer/SubViewport" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="Label" parent="SubViewport/Remaining Primitives UI/VBoxContainer/Icohedron Count Container" index="1"]
+text = "0/0"
+label_settings = SubResource("LabelSettings_ks3ek")
+
+[editable path="SubViewport/Remaining Primitives UI"]
+[editable path="SubViewport/Remaining Primitives UI/VBoxContainer/Tetrahedron Count Container/SubViewportContainer/SubViewport/Tetrahedron"]
+[editable path="SubViewport/Remaining Primitives UI/VBoxContainer/Cube Count Container/SubViewportContainer/SubViewport/Cube"]
+[editable path="SubViewport/Remaining Primitives UI/VBoxContainer/Octahedron Count Container/SubViewportContainer/SubViewport/Octahedron"]
+[editable path="SubViewport/Remaining Primitives UI/VBoxContainer/Dodecahedron Count Container/SubViewportContainer/SubViewport/Dodecahedron"]
+[editable path="SubViewport/Remaining Primitives UI/VBoxContainer/Icohedron Count Container/SubViewportContainer/SubViewport/Icohedron"]

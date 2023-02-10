@@ -10,7 +10,7 @@ points = PackedVector3Array(0.934172, 0.356807, 0, 0, 0.934172, 0.356807, 0.5771
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vl1dw"]
 render_priority = 0
 shader = ExtResource("3_30cvl")
-shader_parameter/Color_Index = 4
+shader_parameter/Color_Index = 3
 
 [node name="hit_dodecahedron" node_paths=PackedStringArray("mesh", "collision_shape") instance=ExtResource("1_ticq0")]
 mesh = NodePath("Dodecahedron/Dodecahedron2")
@@ -18,6 +18,7 @@ score_points = 120
 face_position_array = Array[Vector3]([Vector3(-0.417775, 0.675973, -5.96046e-09), Vector3(0, -0.417775, 0.675973), Vector3(-0.675973, 0, 0.417775), Vector3(0.417775, 0.675973, 0), Vector3(5.96046e-09, -0.417775, -0.675973), Vector3(0.675973, 5.96046e-09, 0.417775), Vector3(-0.417775, -0.675973, 0), Vector3(-0.675974, 0, -0.417775), Vector3(0, 0.417775, -0.675973), Vector3(0.417775, -0.675973, 0), Vector3(0, 0.417775, 0.675973), Vector3(0.675973, 0, -0.417775)])
 face_normal_array = Array[Vector3]([Vector3(-0.525731, 0.850651, 8.50311e-09), Vector3(8.50311e-09, -0.525731, 0.850651), Vector3(-0.850651, 8.50311e-09, 0.525731), Vector3(0.525731, 0.850651, 1.70062e-08), Vector3(-8.50311e-09, -0.525731, -0.850651), Vector3(0.850651, -8.50311e-09, 0.525731), Vector3(-0.525731, -0.850651, -8.50311e-09), Vector3(-0.850651, 0, -0.525731), Vector3(-1.70062e-08, 0.525731, -0.850651), Vector3(0.525731, -0.850651, -1.70062e-08), Vector3(1.70062e-08, 0.525731, 0.850651), Vector3(0.850651, -1.70062e-08, -0.525731)])
 collision_shape = NodePath("StaticBody3D/CollisionShape3D")
+primitive_id = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_f6jcq")

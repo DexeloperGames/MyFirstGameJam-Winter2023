@@ -1,10 +1,11 @@
-[gd_scene load_steps=48 format=3 uid="uid://cagdaet1ugamg"]
+[gd_scene load_steps=50 format=3 uid="uid://cagdaet1ugamg"]
 
 [ext_resource type="Script" path="res://shaders/custom nodes/blender_noise.gd" id="1_6paw0"]
 [ext_resource type="Script" path="res://shaders/custom nodes/blender_bump_node.gd" id="2_23f6f"]
 [ext_resource type="PackedScene" uid="uid://crg8nrgarqfnr" path="res://models/level assets/basic test.glb" id="3_20uwe"]
 [ext_resource type="PackedScene" uid="uid://cnt5exiurrw1s" path="res://scenes/player.tscn" id="4_esd3j"]
 [ext_resource type="Shader" uid="uid://c6nyovd14nd16" path="res://scenes/levels/procedual_concretefr.tres" id="4_oiggj"]
+[ext_resource type="Shader" uid="uid://cm0t864i8m6yb" path="res://scenes/levels/tertoverlayig.tres" id="4_p4xxn"]
 [ext_resource type="PackedScene" uid="uid://dv1csc4yinppv" path="res://scenes/objects/hit_octahedron.tscn" id="6_3ev7n"]
 [ext_resource type="PackedScene" uid="uid://bco7owpaphh8c" path="res://scenes/objects/hit_icohedron.tscn" id="7_eg5vk"]
 [ext_resource type="PackedScene" uid="uid://75e20pg10lfb" path="res://scenes/objects/hit_cube.tscn" id="8_bd1qq"]
@@ -342,8 +343,13 @@ ssr_max_steps = 256
 glow_enabled = true
 glow_blend_mode = 1
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lavn"]
+render_priority = 0
+shader = ExtResource("4_p4xxn")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nhmt"]
 render_priority = 0
+next_pass = SubResource("ShaderMaterial_2lavn")
 shader = ExtResource("4_oiggj")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ge6a7"]

@@ -18,6 +18,7 @@ score_points = 60
 face_position_array = Array[Vector3]([Vector3(0, 1, 0), Vector3(0, 0, 1), Vector3(-1, 0, 0), Vector3(0, -1, 0), Vector3(1, 0, 0), Vector3(0, 0, -1)])
 face_normal_array = Array[Vector3]([Vector3(0, 1, 0), Vector3(0, 0, 1), Vector3(-1, 0, 0), Vector3(0, -1, 0), Vector3(1, 0, 0), Vector3(0, 0, -1)])
 collision_shape = NodePath("StaticBody3D/CollisionShape3D")
+primitive_id = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(0.57735, 0, 0, 0, 0.57735, 0, 0, 0, 0.57735, 0, 0, 0)
