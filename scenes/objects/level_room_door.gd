@@ -17,7 +17,8 @@ extends Node3D
 @export var primitives_display : Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	send_required_primitive_counts()
+	if active:
+		send_required_primitive_counts()
 	pass # Replace with function body.
 
 func send_required_primitive_counts():
@@ -29,16 +30,23 @@ func send_required_primitive_counts():
 	
 
 func check_open():
-	if required_primitive_counts.all(func(vec): return vec.x == vec.y):
+	prints("checking open", required_primitive_counts)
+	if required_primitive_counts.all(func(vec): return vec.x == vec.y or vec.y==0):
+		active=false
 		$MeshInstance3D/StaticBody3D.collision_layer = 0
 		$MeshInstance3D/StaticBody3D.collision_mask = 0
 		$MeshInstance3D.get_surface_override_material(0).set_shader_parameter("Opened", true)
+		print("checked open and yeah it good")
+		if next_door:
+			await RenderingServer.frame_post_draw
+			next_door.active = true
+			next_door.send_required_primitive_counts()
 
 func recieve_primitive_hit(primitive_id):
 	if active:
 		required_primitive_counts[primitive_id].x += 1
-		check_open()
 		send_required_primitive_counts()
+		check_open()
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

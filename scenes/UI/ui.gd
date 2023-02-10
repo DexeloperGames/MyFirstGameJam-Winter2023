@@ -24,3 +24,6 @@ func recieve_player_speed(player, speed):
 
 func recieve_player_dash_amount(player, dash_amount):
 	$"VBoxContainer/Dash Label".text = "DASH: %4.3f"%dash_amount
+
+func recieve_required_primitive_counts(primitive_counts):
+	$"Remaining Primitives UI".display_counts = primitive_counts
