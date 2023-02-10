@@ -1,4 +1,25 @@
-[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://dgh2gd18xhyku"]
+[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://dgh2gd18xhyku"]
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_fffrp"]
+size = Vector2(386.734, 199.357)
+expression = "lifetime = engine_time-in_time;"
+
+[sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_k6eiv"]
+default_input_values = [1, 0.0, 2, 1.0, 3, 1.0, 4, 10.0]
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_680dt"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, 0.5]
+op_type = 4
+
+[sub_resource type="Curve" id="Curve_ei6lw"]
+_data = [Vector2(0, 1), 0.0, -5.11329, 0, 0, Vector2(0.141403, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ak0jy"]
+curve = SubResource("Curve_ei6lw")
+
+[sub_resource type="VisualShaderNodeCurveTexture" id="VisualShaderNodeCurveTexture_f5tji"]
+texture = SubResource("CurveTexture_ak0jy")
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ff2li"]
 parameter_name = "Text_Color"
@@ -32,6 +53,7 @@ global uniform vec4 primitive_color_1;
 global uniform vec4 primitive_color_2;
 global uniform vec4 primitive_color_3;
 global uniform vec4 primitive_color_4;
+global uniform float engine_time;
 
 //const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};"
 
@@ -40,11 +62,21 @@ parameter_name = "Use_Color_Index"
 default_value_enabled = true
 default_value = true
 
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_eswe7"]
+parameter_name = "Spawn_Time"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_s1hxh"]
+operator = 1
+
 [resource]
 code = "shader_type spatial;
+render_mode depth_draw_never, depth_test_disabled;
+
 uniform bool Use_Color_Index = true;
 uniform int Color_Index : hint_range(0, 4);
 uniform vec4 Text_Color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform float Spawn_Time;
+uniform sampler2D curve_frg_15 : repeat_disable;
 
 
 // GlobalExpression:0
@@ -53,6 +85,7 @@ uniform vec4 Text_Color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.00
 	global uniform vec4 primitive_color_2;
 	global uniform vec4 primitive_color_3;
 	global uniform vec4 primitive_color_4;
+	global uniform float engine_time;
 	
 	//const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};
 
@@ -90,20 +123,57 @@ void fragment() {
 	n_out5p0 = mix(vec3(n_out2p0.xyz), vec3(n_out4p0.xyz), float(n_out7p0));
 
 
+// FloatParameter:8
+	float n_out8p0 = Spawn_Time;
+
+
+	float n_out10p0;
+// Expression:10
+	n_out10p0 = 0.0;
+	{
+		n_out10p0 = engine_time-n_out8p0;
+	}
+
+
+// CurveTexture:15
+	float n_out15p0 = texture(curve_frg_15, vec2(n_out10p0)).r;
+
+
+	float n_out13p0;
+// Remap:13
+	float n_in13p1 = 0.00000;
+	float n_in13p2 = 1.00000;
+	float n_in13p3 = 1.00000;
+	float n_in13p4 = 10.00000;
+	{
+		float __input_range = n_in13p2 - n_in13p1;
+		float __output_range = n_in13p4 - n_in13p3;
+		n_out13p0 = n_in13p3 + __output_range * ((n_out15p0 - n_in13p1) / __input_range);
+	}
+
+
+// Mix:14
+	vec3 n_in14p0 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_out14p0 = mix(n_in14p0, n_out5p0, n_out13p0);
+
+
 // Output:0
 	ALBEDO = n_out5p0;
+	EMISSION = n_out14p0;
 
 
 }
 "
-graph_offset = Vector2(-459.352, 101.466)
-nodes/fragment/0/position = Vector2(640, 260)
+graph_offset = Vector2(752.551, 616.134)
+modes/depth_draw = 2
+flags/depth_test_disabled = true
+nodes/fragment/0/position = Vector2(1940, 400)
 nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_ff2li")
 nodes/fragment/2/position = Vector2(-180, 80)
 nodes/fragment/3/node = SubResource("VisualShaderNodeIntParameter_jpiha")
 nodes/fragment/3/position = Vector2(-560, 400)
 nodes/fragment/4/node = SubResource("VisualShaderNodeExpression_obrit")
-nodes/fragment/4/position = Vector2(-260, 500)
+nodes/fragment/4/position = Vector2(-280, 420)
 nodes/fragment/4/size = Vector2(523.279, 391.096)
 nodes/fragment/4/input_ports = "0,1,idx;"
 nodes/fragment/4/output_ports = "0,5,color;"
@@ -119,7 +189,7 @@ switch (idx){
 nodes/fragment/5/node = SubResource("VisualShaderNodeSwitch_guxqa")
 nodes/fragment/5/position = Vector2(320, 300)
 nodes/fragment/6/node = SubResource("VisualShaderNodeGlobalExpression_edrr2")
-nodes/fragment/6/position = Vector2(-860, 860)
+nodes/fragment/6/position = Vector2(-1180, 1060)
 nodes/fragment/6/size = Vector2(1218.27, 260.166)
 nodes/fragment/6/input_ports = ""
 nodes/fragment/6/output_ports = ""
@@ -128,8 +198,25 @@ global uniform vec4 primitive_color_1;
 global uniform vec4 primitive_color_2;
 global uniform vec4 primitive_color_3;
 global uniform vec4 primitive_color_4;
+global uniform float engine_time;
 
 //const vec4[5] colors = {primitive_color_0,primitive_color_1,primitive_color_2,primitive_color_3,primitive_color_4};"
 nodes/fragment/7/node = SubResource("VisualShaderNodeBooleanParameter_ar2do")
 nodes/fragment/7/position = Vector2(-80, 220)
-nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 2, 0, 5, 2, 4, 0, 5, 1, 5, 0, 0, 0, 7, 0, 5, 0)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatParameter_eswe7")
+nodes/fragment/8/position = Vector2(240, 20)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatOp_s1hxh")
+nodes/fragment/9/position = Vector2(586.98, 70.4343)
+nodes/fragment/10/node = SubResource("VisualShaderNodeExpression_fffrp")
+nodes/fragment/10/position = Vector2(320, 640)
+nodes/fragment/10/size = Vector2(386.734, 199.357)
+nodes/fragment/10/input_ports = "0,0,in_time;"
+nodes/fragment/10/output_ports = "0,0,lifetime;"
+nodes/fragment/10/expression = "lifetime = engine_time-in_time;"
+nodes/fragment/13/node = SubResource("VisualShaderNodeRemap_k6eiv")
+nodes/fragment/13/position = Vector2(1266.68, 657.865)
+nodes/fragment/14/node = SubResource("VisualShaderNodeMix_680dt")
+nodes/fragment/14/position = Vector2(1499.34, 580.24)
+nodes/fragment/15/node = SubResource("VisualShaderNodeCurveTexture_f5tji")
+nodes/fragment/15/position = Vector2(860, 660)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 0, 2, 0, 5, 2, 4, 0, 5, 1, 7, 0, 5, 0, 8, 0, 9, 0, 8, 0, 10, 0, 5, 0, 14, 1, 13, 0, 14, 2, 5, 0, 0, 0, 14, 0, 0, 5, 10, 0, 15, 0, 15, 0, 13, 0)

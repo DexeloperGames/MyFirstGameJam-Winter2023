@@ -52,7 +52,7 @@ func hit(thing):
 	if thing is LazerGun:
 		if thing.wielder is Player:
 			thing.wielder.score += score_points
-			facing = thing.wielder.global_position
+			facing = thing.wielder.global_position+Vector3(0,1.57,0)
 	spawn_hit_particles()
 	spawn_hit_text(facing)
 	mesh.set_surface_override_material(0, null)

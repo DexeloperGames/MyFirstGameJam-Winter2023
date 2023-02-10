@@ -11,9 +11,10 @@ depth = 0.01
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_0qubx")
-shader_parameter/Use_Color_Index = null
+shader_parameter/Use_Color_Index = true
 shader_parameter/Color_Index = 0
 shader_parameter/Text_Color = Color(1, 1, 1, 1)
+shader_parameter/Spawn_Time = null
 
 [sub_resource type="Animation" id="Animation_dktgf"]
 resource_name = "Hit"

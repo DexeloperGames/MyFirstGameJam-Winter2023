@@ -336,8 +336,11 @@ sky_material = SubResource("PhysicalSkyMaterial_si0dj")
 [sub_resource type="Environment" id="Environment_5ytq3"]
 background_mode = 2
 sky = SubResource("Sky_h4odh")
+tonemap_mode = 3
 tonemap_exposure = 0.25
 ssr_max_steps = 256
+glow_enabled = true
+glow_blend_mode = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3nhmt"]
 render_priority = 0

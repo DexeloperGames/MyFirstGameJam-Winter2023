@@ -7,7 +7,7 @@
 [node name="LazerGun" type="Node3D" node_paths=PackedStringArray("firing_from_node", "SFX_Player")]
 script = ExtResource("1_e4hhp")
 firing_from_node = NodePath("RayCast3D")
-target_layers = 3
+target_layers = 7
 SFX_Player = NodePath("AudioStreamPlayer3D")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

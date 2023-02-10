@@ -1,11 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxje5q7upn8un"]
+[gd_scene load_steps=5 format=3 uid="uid://cxje5q7upn8un"]
 
 [ext_resource type="Script" path="res://scenes/objects/hit_particle.gd" id="1_t45wl"]
+[ext_resource type="AudioStream" uid="uid://12d88m6ncnil" path="res://sounds/glass/sfx100v2_glass_01.ogg" id="2_jis66"]
+[ext_resource type="AudioStream" uid="uid://cq41w6icjyj2m" path="res://sounds/glass/sfx100v2_glass_04.ogg" id="3_u1tow"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oy3nq"]
+playback_mode = 1
 
 [node name="HitParticle" type="RigidBody3D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 4
+collision_mask = 7
+mass = 0.01
+max_contacts_reported = 4
+contact_monitor = true
 script = ExtResource("1_t45wl")
+collision_sfx_array = Array[AudioStream]([ExtResource("2_jis66"), ExtResource("3_u1tow")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
@@ -15,4 +24,9 @@ script = ExtResource("1_t45wl")
 process_callback = 0
 one_shot = true
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_oy3nq")
+max_polyphony = 4
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

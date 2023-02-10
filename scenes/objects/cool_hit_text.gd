@@ -10,6 +10,7 @@ class_name CoolHitText
 func _ready():
 	$MeshInstance3D.mesh.text = "+%s"%number
 	$MeshInstance3D.get_surface_override_material(0).set_shader_parameter("Color_Index", color_index)
+	$MeshInstance3D.get_surface_override_material(0).set_shader_parameter("Spawn_Time", Time.get_ticks_usec()/1.0e+6)
 	$AnimationPlayer.play("Hit")
 	pass # Replace with function body.
 
