@@ -55,4 +55,5 @@ func hit(thing):
 			facing = thing.wielder.global_position
 	spawn_hit_particles()
 	spawn_hit_text(facing)
+	mesh.set_surface_override_material(0, null)
 	queue_free()

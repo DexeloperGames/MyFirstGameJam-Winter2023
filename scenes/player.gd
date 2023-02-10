@@ -11,7 +11,9 @@ class_name Player
 @export var dash_regen : float = 1.0
 @export var dash_drain : float = 1.0
 @export var score : int = 0
+var dashing : bool = false
 var dash_amount : float = 1.0
+var pre_dash_velocity : Vector3 = Vector3.ZERO
 var weapon_idx = 0
 var SPEED = 5.0
 var JUMP_VELOCITY = 10.0
@@ -52,9 +54,15 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-	if Input.is_action_pressed("dash"):
-		velocity += PlayerCamera.camera_global_transform.basis*Vector3(input_dir.x,0,input_dir.y)*SPEED*100.0*dash_amount*delta
+	if dashing:
+		var new_velocity = velocity+PlayerCamera.camera_global_transform.basis*Vector3(input_dir.x,0,input_dir.y)*SPEED*100.0*dash_amount*delta
+#		velocity = lerp(pre_dash_velocity,new_velocity,dash_amount)
+		velocity = new_velocity
 		dash_amount = max(dash_amount-dash_drain*delta*SPEED,0.0)
+		if dash_amount == 0.0:
+			velocity = pre_dash_velocity
+			dashing = false
+#			velocity = pre_dash_velocity
 	else:
 		dash_amount = min(dash_amount+dash_regen*delta, 1.0)
 	get_tree().call_group("Player Data Recievers", "recieve_player_speed", self, SPEED)
@@ -71,6 +79,12 @@ func _unhandled_input(event):
 		var weapon = [left_weapon,right_weapon][weapon_idx]
 		weapon.fire()
 		weapon_idx = (weapon_idx+1)%2
+	if event.is_action_pressed("dash"):
+		pre_dash_velocity = velocity
+		dashing = true
+	if event.is_action_released("dash"):
+		velocity = pre_dash_velocity
+		dashing = false
 #	if event.is_action_pressed("dash") and can_dash:
 #		velocity += PlayerCamera.camera_global_transform.basis*Vector3(0,0,-1)*SPEED*10.0
 ##		can_dash = false

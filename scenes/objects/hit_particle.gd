@@ -49,10 +49,12 @@ func hit(thing):
 			thing.wielder.score += 10
 			facing = thing.wielder.global_position
 	spawn_hit_text(facing)
+	$MeshInstance3D.material_override = null
 	queue_free()
 	pass
 
 
 func _on_timer_timeout():
+	$MeshInstance3D.material_override = null
 	queue_free()
 	pass # Replace with function body.

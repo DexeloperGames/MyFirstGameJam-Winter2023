@@ -41,7 +41,6 @@ default_value_enabled = true
 default_value = true
 
 [resource]
-resource_local_to_scene = true
 code = "shader_type spatial;
 uniform bool Use_Color_Index = true;
 uniform int Color_Index : hint_range(0, 4);
