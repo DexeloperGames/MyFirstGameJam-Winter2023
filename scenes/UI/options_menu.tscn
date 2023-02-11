@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://wb2cpoh2bogr"]
+
+[ext_resource type="PackedScene" uid="uid://bj4r0dwh75vms" path="res://scenes/UI/colors_settings.tscn" id="1_b5o6c"]
+
+[node name="Options Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Colors" type="Control" parent="TabContainer"]
+layout_mode = 2
+
+[node name="Colors Settings" parent="TabContainer/Colors" instance=ExtResource("1_b5o6c")]
+layout_mode = 1
+
+[node name="Video" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Audio" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Controls" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2

@@ -164,7 +164,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(752.551, 616.134)
+graph_offset = Vector2(146.971, 273.461)
 modes/depth_draw = 2
 flags/depth_test_disabled = true
 nodes/fragment/0/position = Vector2(1940, 400)
@@ -189,7 +189,7 @@ switch (idx){
 nodes/fragment/5/node = SubResource("VisualShaderNodeSwitch_guxqa")
 nodes/fragment/5/position = Vector2(320, 300)
 nodes/fragment/6/node = SubResource("VisualShaderNodeGlobalExpression_edrr2")
-nodes/fragment/6/position = Vector2(-1180, 1060)
+nodes/fragment/6/position = Vector2(-200, 960)
 nodes/fragment/6/size = Vector2(1218.27, 260.166)
 nodes/fragment/6/input_ports = ""
 nodes/fragment/6/output_ports = ""
@@ -204,7 +204,7 @@ global uniform float engine_time;
 nodes/fragment/7/node = SubResource("VisualShaderNodeBooleanParameter_ar2do")
 nodes/fragment/7/position = Vector2(-80, 220)
 nodes/fragment/8/node = SubResource("VisualShaderNodeFloatParameter_eswe7")
-nodes/fragment/8/position = Vector2(240, 20)
+nodes/fragment/8/position = Vector2(240, 540)
 nodes/fragment/9/node = SubResource("VisualShaderNodeFloatOp_s1hxh")
 nodes/fragment/9/position = Vector2(586.98, 70.4343)
 nodes/fragment/10/node = SubResource("VisualShaderNodeExpression_fffrp")

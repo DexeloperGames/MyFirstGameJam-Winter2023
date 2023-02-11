@@ -23,7 +23,7 @@ Globals="*res://data/globals.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=4
+window/size/mode=2
 window/vsync/vsync_mode=0
 
 [input]
@@ -101,4 +101,8 @@ primitive_color_4={
 engine_time={
 "type": "float",
 "value": 0.0
+}
+level_fade_speed={
+"type": "float",
+"value": 100.0
 }

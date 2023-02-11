@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://dgh2gd18xhyku" path="res://scenes/objects/cool_hit_text.tres" id="2_0qubx"]
 
 [sub_resource type="TextMesh" id="TextMesh_xaxyj"]
+resource_local_to_scene = true
 text = "+200"
 depth = 0.01
 

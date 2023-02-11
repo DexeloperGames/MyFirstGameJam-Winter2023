@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca785nfyxjeek"]
+
+[ext_resource type="Script" path="res://scenes/objects/multi_pass_camera.gd" id="1_qk3io"]
+
+[node name="Multi-Pass Camera" type="Camera3D"]
+cull_mask = 1048574
+script = ExtResource("1_qk3io")

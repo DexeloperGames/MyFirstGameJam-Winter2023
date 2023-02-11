@@ -8,8 +8,12 @@
 points = PackedVector3Array(-1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t4xah"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_vqcmp")
+shader_parameter/Spawned = true
+shader_parameter/Spawn_Time = null
+shader_parameter/Fade_Start_Position = null
 shader_parameter/Color_Index = 1
 
 [node name="hit_cube" node_paths=PackedStringArray("mesh", "collision_shape") instance=ExtResource("1_1me1j")]
@@ -27,6 +31,7 @@ shape = SubResource("ConvexPolygonShape3D_8j3fi")
 [node name="Cube" parent="." index="2" instance=ExtResource("2_i7la0")]
 
 [node name="Cube2" parent="Cube" index="0"]
+layers = 3
 surface_material_override/0 = SubResource("ShaderMaterial_t4xah")
 
 [editable path="Cube"]

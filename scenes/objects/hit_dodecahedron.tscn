@@ -8,8 +8,11 @@
 points = PackedVector3Array(0.934172, 0.356807, 0, 0, 0.934172, 0.356807, 0.577182, 0.577182, 0.577182, 0.356807, 0, 0.934172, 0.934172, -0.35699, 0, 0.356807, 0, -0.934172, 0.577182, 0.577182, -0.577365, 0, 0.934172, -0.35699, -0.934172, 0.356807, 0, -0.577365, 0.577182, 0.577182, -0.35699, 0, 0.934172, 0, -0.934172, 0.356807, 0.577182, -0.577365, 0.577182, 0, -0.934172, -0.35699, 0.577182, -0.577365, -0.577365, -0.35699, 0, -0.934172, -0.577365, 0.577182, -0.577365, -0.934172, -0.35699, 0, -0.577365, -0.577365, 0.577182, -0.577365, -0.577365, -0.577365)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vl1dw"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_30cvl")
+shader_parameter/Spawned = true
+shader_parameter/Spawn_Time = null
 shader_parameter/Color_Index = 3
 
 [node name="hit_dodecahedron" node_paths=PackedStringArray("mesh", "collision_shape") instance=ExtResource("1_ticq0")]

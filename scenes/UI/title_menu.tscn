@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmho0f7ybdm27"]
+
+[ext_resource type="Script" path="res://scenes/UI/title_menu.gd" id="1_nyc85"]
+[ext_resource type="FontFile" uid="uid://ubn564mq81hg" path="res://fonts/ariblk.ttf" id="1_pknhx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_shbj0"]
+font = ExtResource("1_pknhx")
+font_size = 131
+outline_size = 17
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 37
+shadow_color = Color(0, 0, 0, 0.87451)
+shadow_offset = Vector2(12.109, 12.113)
+
+[node name="Title Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nyc85")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -332.0
+offset_bottom = 332.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "PRIMITIVES
+HUNTER"
+label_settings = SubResource("LabelSettings_shbj0")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pknhx")
+theme_override_font_sizes/font_size = 92
+text = "PLAY"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pknhx")
+theme_override_font_sizes/font_size = 92
+text = "OPTIONS"
+
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]

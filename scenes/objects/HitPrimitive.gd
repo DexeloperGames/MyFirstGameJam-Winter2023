@@ -9,6 +9,11 @@ class_name HitPrimitive
 @export var collision_shape : CollisionShape3D
 @export var particle_speed : float = 1
 @export var primitive_id : int = 0
+@export var mesh_visible : bool = true:
+	set(n_visible):
+		mesh_visible = n_visible
+		if not is_inside_tree(): await ready
+		mesh.visible = n_visible
 var hit_particle = preload("res://scenes/objects/hit_particle.tscn")
 var hit_text = preload("res://scenes/objects/cool_hit_text.tscn")
 #@export var thing : Array[Vector3]
@@ -17,6 +22,12 @@ func _ready():
 	$AnimationPlayer.play("Rotate Y")
 	pass # Replace with function body.
 
+func start_spawn_animation(start_position):
+	mesh.get_surface_override_material(0).set_shader_parameter("Spawned", false)
+	mesh.get_surface_override_material(0).set_shader_parameter("Spawn_Time", Time.get_ticks_usec()/1.0e+6)
+	mesh.get_surface_override_material(0).set_shader_parameter("Fade_Start_Position", start_position)
+	self.mesh_visible = true
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

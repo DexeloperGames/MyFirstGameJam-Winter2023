@@ -8,8 +8,11 @@
 points = PackedVector3Array(-0.894425, -0.447338, -5.96046e-08, 0, -1, -5.96046e-08, -0.276487, -0.447338, 0.85064, -0.7237, 0.447142, 0.525572, -0.7237, 0.447142, -0.525738, -0.276487, -0.447338, -0.85064, 0.723525, -0.447338, -0.525738, 0.723525, -0.447338, 0.525572, 0.276312, 0.447142, 0.85064, 0, 1, -5.96046e-08, 0.276312, 0.447142, -0.85064, 0.894425, 0.447142, -5.96046e-08)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avi4f"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_hlfoi")
+shader_parameter/Spawned = true
+shader_parameter/Spawn_Time = null
 shader_parameter/Color_Index = 4
 
 [node name="hit_icohedron" node_paths=PackedStringArray("mesh", "collision_shape") instance=ExtResource("1_2xpo6")]

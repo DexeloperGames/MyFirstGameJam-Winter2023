@@ -1,0 +1,69 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://0w31snawcdtr"]
+
+[sub_resource type="VisualShaderNodeVectorDistance" id="VisualShaderNodeVectorDistance_75exc"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(-8.253, 3.015, 0)]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ut7ua"]
+input_name = "vertex"
+
+[sub_resource type="VisualShaderNodeTransformVecMult" id="VisualShaderNodeTransformVecMult_cam13"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_12icr"]
+input_name = "inv_view_matrix"
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_3llem"]
+function = 17
+
+[sub_resource type="VisualShaderNodeCompare" id="VisualShaderNodeCompare_vqsqq"]
+default_input_values = [0, 0.0, 1, 2.868, 2, 1e-05]
+function = 5
+
+[resource]
+code = "shader_type spatial;
+
+
+
+void fragment() {
+// Input:5
+	mat4 n_out5p0 = INV_VIEW_MATRIX;
+
+
+// Input:3
+	vec3 n_out3p0 = VERTEX;
+
+
+// TransformVectorMult:4
+	vec3 n_out4p0 = (n_out5p0 * vec4(n_out3p0, 1.0)).xyz;
+
+
+// Distance:2
+	vec3 n_in2p1 = vec3(-8.25300, 3.01500, 0.00000);
+	float n_out2p0 = distance(n_out4p0, n_in2p1);
+
+
+// Compare:7
+	float n_in7p1 = 2.86800;
+	bool n_out7p0 = n_out2p0 <= n_in7p1;
+
+
+// Output:0
+	ALPHA = (n_out7p0 ? 1.0 : 0.0);
+
+
+}
+"
+graph_offset = Vector2(397.289, 100.323)
+nodes/fragment/0/position = Vector2(980, 220)
+nodes/fragment/2/node = SubResource("VisualShaderNodeVectorDistance_75exc")
+nodes/fragment/2/position = Vector2(300, 240)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_ut7ua")
+nodes/fragment/3/position = Vector2(-260, 200)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTransformVecMult_cam13")
+nodes/fragment/4/position = Vector2(76.47, 226.779)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_12icr")
+nodes/fragment/5/position = Vector2(-280, 300)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatFunc_3llem")
+nodes/fragment/6/position = Vector2(520, 260)
+nodes/fragment/7/node = SubResource("VisualShaderNodeCompare_vqsqq")
+nodes/fragment/7/position = Vector2(740, 200)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 1, 5, 0, 4, 0, 4, 0, 2, 0, 2, 0, 6, 0, 2, 0, 7, 0, 7, 0, 0, 1)

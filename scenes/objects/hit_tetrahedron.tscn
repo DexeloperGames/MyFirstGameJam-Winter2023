@@ -8,8 +8,11 @@
 points = PackedVector3Array(0.942809, -0.333333, 0, -0.471405, -0.333333, 0.816497, -0.471405, -0.333333, -0.816497, -4.61638e-05, 1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d5kyt"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_qenk3")
+shader_parameter/Spawned = true
+shader_parameter/Spawn_Time = null
 shader_parameter/Color_Index = 0
 
 [node name="HitTetrahedron" node_paths=PackedStringArray("mesh", "collision_shape") instance=ExtResource("1_3y7c8")]

@@ -22,22 +22,25 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_aiva0"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jh255"]
 sky_top_color = Color(0.811765, 0.847059, 0.894118, 1)
 
 [sub_resource type="Sky" id="Sky_76oih"]
-sky_material = SubResource("ProceduralSkyMaterial_aiva0")
+sky_material = SubResource("ProceduralSkyMaterial_jh255")
 
-[sub_resource type="Environment" id="Environment_k0woi"]
+[sub_resource type="Environment" id="Environment_patrl"]
 background_mode = 2
 sky = SubResource("Sky_76oih")
 
 [sub_resource type="World3D" id="World3D_qajek"]
-environment = SubResource("Environment_k0woi")
+environment = SubResource("Environment_patrl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r3pqw"]
 render_priority = 0
 shader = ExtResource("2_olqeu")
+shader_parameter/Spawned = true
+shader_parameter/Spawn_Time = null
+shader_parameter/Fade_Start_Position = null
 shader_parameter/Color_Index = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u5jtb"]
@@ -47,6 +50,9 @@ shader_parameter/Color_Index = null
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ikv0n"]
 render_priority = 0
 shader = ExtResource("2_olqeu")
+shader_parameter/Spawned = true
+shader_parameter/Spawn_Time = null
+shader_parameter/Fade_Start_Position = null
 shader_parameter/Color_Index = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_plrmq"]
@@ -56,6 +62,9 @@ shader_parameter/Color_Index = 1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yxjmi"]
 render_priority = 0
 shader = ExtResource("2_olqeu")
+shader_parameter/Spawned = true
+shader_parameter/Spawn_Time = null
+shader_parameter/Fade_Start_Position = null
 shader_parameter/Color_Index = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n2u6a"]
@@ -65,6 +74,9 @@ shader_parameter/Color_Index = 2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4tu4w"]
 render_priority = 0
 shader = ExtResource("2_olqeu")
+shader_parameter/Spawned = true
+shader_parameter/Spawn_Time = null
+shader_parameter/Fade_Start_Position = null
 shader_parameter/Color_Index = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v2erv"]
@@ -74,6 +86,9 @@ shader_parameter/Color_Index = 3
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kytt7"]
 render_priority = 0
 shader = ExtResource("2_olqeu")
+shader_parameter/Spawned = true
+shader_parameter/Spawn_Time = null
+shader_parameter/Fade_Start_Position = null
 shader_parameter/Color_Index = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1ln6"]

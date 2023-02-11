@@ -1,0 +1,128 @@
+[gd_scene load_steps=16 format=3 uid="uid://cuwqyw5tguu5o"]
+
+[ext_resource type="Script" path="res://scenes/UI/main_menu_ui.gd" id="1_difwm"]
+[ext_resource type="Texture2D" uid="uid://dj8apa3oy05bx" path="res://images/title menu images/noise bg.png" id="2_xceds"]
+[ext_resource type="Texture2D" uid="uid://c70ojqg3ixxo5" path="res://images/title menu images/cube mask.png" id="3_8st0w"]
+[ext_resource type="PackedScene" uid="uid://wb2cpoh2bogr" path="res://scenes/UI/options_menu.tscn" id="3_nrxwj"]
+[ext_resource type="Shader" uid="uid://brf3t27agx0i3" path="res://scenes/UI/primitive_color_multiply.tres" id="3_wg68n"]
+[ext_resource type="Texture2D" uid="uid://cbiv2mmwtonqo" path="res://images/title menu images/tetra mask.png" id="4_yk0uy"]
+[ext_resource type="Texture2D" uid="uid://8awm7q2d8cwb" path="res://images/title menu images/octa mask.png" id="5_n61xd"]
+[ext_resource type="Texture2D" uid="uid://bycnk43xnr23c" path="res://images/title menu images/dodeca mask.png" id="6_hsu44"]
+[ext_resource type="Texture2D" uid="uid://dxh1pge8jv61g" path="res://images/title menu images/ico mask.png" id="7_06lgb"]
+[ext_resource type="PackedScene" uid="uid://dmho0f7ybdm27" path="res://scenes/UI/title_menu.tscn" id="9_3sudp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ju5ab"]
+shader = ExtResource("3_wg68n")
+shader_parameter/Color_Index = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ms6de"]
+shader = ExtResource("3_wg68n")
+shader_parameter/Color_Index = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tihbp"]
+shader = ExtResource("3_wg68n")
+shader_parameter/Color_Index = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ge7s"]
+shader = ExtResource("3_wg68n")
+shader_parameter/Color_Index = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ad88i"]
+shader = ExtResource("3_wg68n")
+shader_parameter/Color_Index = 4
+
+[node name="Main Menu UI" type="Control" node_paths=PackedStringArray("current_menu_node") groups=["Main Menu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_difwm")
+current_menu_node = NodePath("Current Menu")
+title_menu = ExtResource("9_3sudp")
+options_menu = ExtResource("3_nrxwj")
+
+[node name="Title Image" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Noise BG" type="TextureRect" parent="Title Image"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xceds")
+stretch_mode = 6
+
+[node name="Tetra Mesh" type="TextureRect" parent="Title Image"]
+material = SubResource("ShaderMaterial_ju5ab")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_yk0uy")
+stretch_mode = 6
+
+[node name="Cube Mask" type="TextureRect" parent="Title Image"]
+material = SubResource("ShaderMaterial_ms6de")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8st0w")
+stretch_mode = 6
+
+[node name="Octa Mask" type="TextureRect" parent="Title Image"]
+material = SubResource("ShaderMaterial_tihbp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_n61xd")
+stretch_mode = 6
+
+[node name="Dodeca Mask" type="TextureRect" parent="Title Image"]
+material = SubResource("ShaderMaterial_7ge7s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_hsu44")
+stretch_mode = 6
+
+[node name="Ico Mask" type="TextureRect" parent="Title Image"]
+material = SubResource("ShaderMaterial_ad88i")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_06lgb")
+stretch_mode = 6
+
+[node name="Current Menu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title Menu" parent="Current Menu" instance=ExtResource("9_3sudp")]
+layout_mode = 1
