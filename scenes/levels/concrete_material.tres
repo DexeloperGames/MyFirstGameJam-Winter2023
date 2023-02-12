@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b8b6cao247lsd"]
+
+[ext_resource type="Shader" uid="uid://c6nyovd14nd16" path="res://scenes/levels/procedual_concretefr.tres" id="1_jp4a8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jp4a8")

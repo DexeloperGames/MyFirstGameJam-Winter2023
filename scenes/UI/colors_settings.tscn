@@ -104,6 +104,69 @@ shader_parameter/Color_Index = 4
 shader = ExtResource("4_7cq3k")
 shader_parameter/Color_Index = 4
 
+[sub_resource type="Animation" id="Animation_vnof6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Icohedron Count Container/SubViewportContainer/SubViewport/Icohedron/Icohedron2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Dodecahedron Count Container/SubViewportContainer/SubViewport/Dodecahedron/Dodecahedron2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.28319, 6.28319, 6.28319)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Octahedron Count Container/SubViewportContainer/SubViewport/Octahedron/Octahedron2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer/Cube Count Container/SubViewportContainer/SubViewport/Cube/Cube2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.28319, 6.28319, 6.28319)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VBoxContainer/Tetrahedron Count Container/SubViewportContainer/SubViewport/Tetrahedron/Tetrahedron2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_bunx6"]
 resource_name = "Spin"
 loop_mode = 1
@@ -166,69 +229,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(6.28319, 6.28319, 6.28319)]
-}
-
-[sub_resource type="Animation" id="Animation_vnof6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer/Icohedron Count Container/SubViewportContainer/SubViewport/Icohedron/Icohedron2:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VBoxContainer/Dodecahedron Count Container/SubViewportContainer/SubViewport/Dodecahedron/Dodecahedron2:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(6.28319, 6.28319, 6.28319)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("VBoxContainer/Octahedron Count Container/SubViewportContainer/SubViewport/Octahedron/Octahedron2:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("VBoxContainer/Cube Count Container/SubViewportContainer/SubViewport/Cube/Cube2:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(6.28319, 6.28319, 6.28319)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("VBoxContainer/Tetrahedron Count Container/SubViewportContainer/SubViewport/Tetrahedron/Tetrahedron2:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vyr01"]
@@ -342,7 +342,7 @@ render_target_update_mode = 4
 transform = Transform3D(0.857372, -0.130245, 0.497945, 0.497945, 0.454713, -0.738435, -0.130245, 0.881063, 0.454713, 0, 0, -7)
 
 [node name="Cube2" parent="VBoxContainer/Cube Count Container/SubViewportContainer/SubViewport/Cube" index="0"]
-transform = Transform3D(0.57735, -1.00947e-07, 1.00947e-07, 1.00947e-07, 0.57735, -1.00947e-07, -1.00947e-07, 1.00947e-07, 0.57735, 0, 0, 0)
+transform = Transform3D(0.57735, -2.57865e-06, 2.57866e-06, 2.57866e-06, 0.57735, -2.57866e-06, -2.57865e-06, 2.57868e-06, 0.57735, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_tnbb5")
 
 [node name="Camera3D" type="Camera3D" parent="VBoxContainer/Cube Count Container/SubViewportContainer/SubViewport"]
@@ -444,7 +444,7 @@ fov = 30.0
 transform = Transform3D(0.857372, -0.130245, 0.497945, 0.497945, 0.454713, -0.738435, -0.130245, 0.881063, 0.454713, 0, 0, -6)
 
 [node name="Dodecahedron2" parent="VBoxContainer/Dodecahedron Count Container/SubViewportContainer/SubViewport/Dodecahedron" index="0"]
-transform = Transform3D(1, -1.74846e-07, 1.74846e-07, 1.74846e-07, 1, -1.74846e-07, -1.74846e-07, 1.74846e-07, 1, 0, 0, 0)
+transform = Transform3D(1, -4.46636e-06, 4.46638e-06, 4.46638e-06, 1, -4.46638e-06, -4.46636e-06, 4.4664e-06, 1, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_sqnpr")
 
 [node name="Label" type="Label" parent="VBoxContainer/Dodecahedron Count Container"]
@@ -517,10 +517,15 @@ libraries = {
 }
 
 [connection signal="color_changed" from="VBoxContainer/Tetrahedron Count Container/Primitive 1 Color Picker" to="." method="_on_primitive_1_color_picker_color_changed"]
+[connection signal="popup_closed" from="VBoxContainer/Tetrahedron Count Container/Primitive 1 Color Picker" to="." method="_on_primitive_color_picker_popup_closed"]
 [connection signal="color_changed" from="VBoxContainer/Cube Count Container/Primitive 2 Color Picker" to="." method="_on_primitive_2_color_picker_color_changed"]
+[connection signal="popup_closed" from="VBoxContainer/Cube Count Container/Primitive 2 Color Picker" to="." method="_on_primitive_color_picker_popup_closed"]
 [connection signal="color_changed" from="VBoxContainer/Octahedron Count Container/Primitive 3 Color Picker" to="." method="_on_primitive_3_color_picker_color_changed"]
+[connection signal="popup_closed" from="VBoxContainer/Octahedron Count Container/Primitive 3 Color Picker" to="." method="_on_primitive_color_picker_popup_closed"]
 [connection signal="color_changed" from="VBoxContainer/Dodecahedron Count Container/Primitive 4 Color Picker" to="." method="_on_primitive_4_color_picker_color_changed"]
+[connection signal="popup_closed" from="VBoxContainer/Dodecahedron Count Container/Primitive 4 Color Picker" to="." method="_on_primitive_color_picker_popup_closed"]
 [connection signal="color_changed" from="VBoxContainer/Icohedron Count Container/Primitive 5 Color Picker" to="." method="_on_primitive_5_color_picker_color_changed"]
+[connection signal="popup_closed" from="VBoxContainer/Icohedron Count Container/Primitive 5 Color Picker" to="." method="_on_primitive_color_picker_popup_closed"]
 
 [editable path="VBoxContainer/Tetrahedron Count Container/SubViewportContainer/SubViewport/Tetrahedron"]
 [editable path="VBoxContainer/Cube Count Container/SubViewportContainer/SubViewport/Cube"]

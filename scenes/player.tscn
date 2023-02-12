@@ -9,7 +9,7 @@
 radius = 0.408
 height = 1.84833
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera", "left_weapon", "right_weapon")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCamera", "left_weapon", "right_weapon") groups=["Player Camera Recievers"]]
 collision_layer = 3
 collision_mask = 3
 floor_block_on_wall = false

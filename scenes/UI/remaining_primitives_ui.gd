@@ -43,6 +43,6 @@ func _process(delta):
 
 
 func _on_resized():
-	print("HEY RESIZE")
+#	print("HEY RESIZE")
 	update_text_label_sizes()
 	pass # Replace with function body.

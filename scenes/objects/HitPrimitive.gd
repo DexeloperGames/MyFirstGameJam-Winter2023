@@ -23,10 +23,11 @@ func _ready():
 	pass # Replace with function body.
 
 func start_spawn_animation(start_position):
-	mesh.get_surface_override_material(0).set_shader_parameter("Spawned", false)
-	mesh.get_surface_override_material(0).set_shader_parameter("Spawn_Time", Time.get_ticks_usec()/1.0e+6)
-	mesh.get_surface_override_material(0).set_shader_parameter("Fade_Start_Position", start_position)
-	self.mesh_visible = true
+	pass
+#	mesh.get_surface_override_material(0).set_shader_parameter("Spawned", false)
+#	mesh.get_surface_override_material(0).set_shader_parameter("Spawn_Time", Time.get_ticks_usec()/1.0e+6)
+#	mesh.get_surface_override_material(0).set_shader_parameter("Fade_Start_Position", start_position)
+#	self.mesh_visible = true
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,13 +54,14 @@ func spawn_hit_particles():
 func spawn_hit_text(facing_position = Vector3.ZERO):
 	var new_hit_text = hit_text.instantiate()
 	new_hit_text.number = score_points
-	new_hit_text.color_index = mesh.get_surface_override_material(0).get_shader_parameter("Color_Index")
+	if mesh != null:
+		new_hit_text.color_index = mesh.get_surface_override_material(0).get_shader_parameter("Color_Index")
 	add_sibling(new_hit_text)
 	new_hit_text.global_position = global_position
 	(new_hit_text as Node3D).look_at(facing_position)
 
 func hit(thing):
-	print("yeahthing")
+#	print("yeahthing")
 	var facing = Vector3.ZERO
 	if thing is LazerGun:
 		if thing.wielder is Player:

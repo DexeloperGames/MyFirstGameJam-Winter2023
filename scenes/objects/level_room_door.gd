@@ -3,7 +3,7 @@ extends Node3D
 
 @export var size : Vector2 = Vector2.ONE:
 	set(n_size):
-		print("set getting size ig")
+#		print("set getting size ig")
 		size = n_size
 		if not is_inside_tree(): await ready
 		$MeshInstance3D.mesh.size = n_size

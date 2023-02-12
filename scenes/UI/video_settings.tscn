@@ -1,9 +1,347 @@
-[gd_scene format=3 uid="uid://by83pqcnpttsa"]
+[gd_scene load_steps=6 format=3 uid="uid://by83pqcnpttsa"]
 
-[node name="Video Settings" type="Control"]
+[ext_resource type="Script" path="res://scenes/UI/video_settings.gd" id="1_o35wo"]
+[ext_resource type="Texture2D" uid="uid://c3n8dlx36ktkq" path="res://images/lil chevron.png" id="1_svxis"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5udec"]
+font_size = 34
+
+[sub_resource type="LabelSettings" id="LabelSettings_7l73p"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_g0t0d"]
+font_size = 19
+
+[node name="Video Settings" type="Control" node_paths=PackedStringArray("FOVSpinBox", "FOVSlider", "FOVFitMenu", "WindowModeMenu", "ResolutionXSpinBox", "ResolutionYSpinBox", "VSyncCheckBox", "CapFramerateCheckBox", "MaximumFramerateSpinBox", "TextureResolutionMenu", "SettingsAppliedPanel", "RevertTimer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_o35wo")
+FOVSpinBox = NodePath("VBoxContainer/HBoxContainer/FOVSpinBox")
+FOVSlider = NodePath("VBoxContainer/HBoxContainer2/FOVSlider")
+FOVFitMenu = NodePath("VBoxContainer/HBoxContainer3/FitCameraFOVMenu")
+WindowModeMenu = NodePath("VBoxContainer/HBoxContainer4/WindowModeMenu")
+ResolutionXSpinBox = NodePath("VBoxContainer/HBoxContainer5/ResolutionXSpinBox")
+ResolutionYSpinBox = NodePath("VBoxContainer/HBoxContainer5/ResolutionYSpinBox")
+VSyncCheckBox = NodePath("VBoxContainer/VSyncCheckBox")
+CapFramerateCheckBox = NodePath("VBoxContainer/HBoxContainer6/CapFramerateCheckBox")
+MaximumFramerateSpinBox = NodePath("VBoxContainer/HBoxContainer6/MaximumFramerateSpinBox")
+TextureResolutionMenu = NodePath("VBoxContainer/HBoxContainer7/TextureResolutionMenu")
+SettingsAppliedPanel = NodePath("SettingsAppliedPanel")
+RevertTimer = NodePath("RevertTimer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Camera Settings"
+label_settings = SubResource("LabelSettings_5udec")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Camera FOV:"
+
+[node name="FOVSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+min_value = 10.0
+max_value = 170.0
+step = 0.01
+value = 90.0
+suffix = "°"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "10°"
+
+[node name="FOVSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 10.0
+max_value = 170.0
+step = 0.01
+value = 90.0
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "170°"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Fit Camera FOV "
+
+[node name="FitCameraFOVMenu" type="MenuButton" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Vertically "
+icon = ExtResource("1_svxis")
+flat = false
+icon_alignment = 2
+expand_icon = true
+switch_on_hover = true
+item_count = 2
+popup/item_0/text = "Vertically"
+popup/item_0/checked = true
+popup/item_0/id = 0
+popup/item_1/text = "Horizonatlly"
+popup/item_1/id = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.22
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Window Settings"
+label_settings = SubResource("LabelSettings_5udec")
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Window Type: "
+
+[node name="WindowModeMenu" type="MenuButton" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.87
+text = "Windowed"
+icon = ExtResource("1_svxis")
+flat = false
+icon_alignment = 2
+expand_icon = true
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/checked = true
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Exclusive Fullscreen"
+popup/item_2/id = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.73
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Boarderless"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Fullscreen Resolution: "
+
+[node name="ResolutionXSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+min_value = 144.0
+max_value = 3840.0
+value = 1920.0
+suffix = "p"
+select_all_on_focus = true
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "x"
+
+[node name="ResolutionYSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+min_value = 144.0
+max_value = 3840.0
+value = 1080.0
+suffix = "p"
+select_all_on_focus = true
+
+[node name="VSyncCheckBox" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+text = "VSync"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CapFramerateCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Cap Framerate:"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer6"]
+visible = false
+layout_mode = 2
+text = "Max Frame Rate: "
+
+[node name="MaximumFramerateSpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+min_value = 1.0
+max_value = 480.0
+value = 60.0
+suffix = "FPS"
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Graphics Settings"
+label_settings = SubResource("LabelSettings_5udec")
+
+[node name="HSeparator5" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+text = "Texture Resolution: "
+
+[node name="TextureResolutionMenu" type="MenuButton" parent="VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Zero"
+icon = ExtResource("1_svxis")
+flat = false
+icon_alignment = 2
+expand_icon = true
+item_count = 2
+popup/item_0/text = "Zero"
+popup/item_0/checked = true
+popup/item_0/id = 0
+popup/item_1/text = "Infinite"
+popup/item_1/id = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.27
+
+[node name="HSeparator6" type="HSeparator" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Apply Settings Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Apply Settings"
+
+[node name="RevertTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="SettingsAppliedPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsAppliedPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SettingsAppliedPanel/VBoxContainer"]
+layout_mode = 2
+text = "Settings Applied"
+label_settings = SubResource("LabelSettings_7l73p")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="SettingsAppliedPanel/VBoxContainer"]
+layout_mode = 2
+text = "Settings will revert in 5 second..."
+label_settings = SubResource("LabelSettings_g0t0d")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="SettingsAppliedPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsAppliedPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Control2" type="Control" parent="SettingsAppliedPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Keep Changes Button" type="Button" parent="SettingsAppliedPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Keep Changes"
+
+[node name="Revert Button" type="Button" parent="SettingsAppliedPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Revert"
+
+[node name="Control" type="Control" parent="SettingsAppliedPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="SettingsAppliedPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="gui_input" from="VBoxContainer/HBoxContainer/FOVSpinBox" to="." method="_on_fov_spin_box_gui_input"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/FOVSpinBox" to="." method="_on_fov_spin_box_value_changed"]
+[connection signal="drag_ended" from="VBoxContainer/HBoxContainer2/FOVSlider" to="." method="_on_fov_slider_drag_ended"]
+[connection signal="gui_input" from="VBoxContainer/HBoxContainer2/FOVSlider" to="." method="_on_fov_slider_gui_input"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/FOVSlider" to="." method="_on_fov_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer5/ResolutionXSpinBox" to="." method="_on_resolution_x_spin_box_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer5/ResolutionYSpinBox" to="." method="_on_resolution_y_spin_box_value_changed"]
+[connection signal="toggled" from="VBoxContainer/VSyncCheckBox" to="." method="_on_v_sync_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer6/CapFramerateCheckBox" to="." method="_on_cap_framerate_check_box_toggled"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer6/MaximumFramerateSpinBox" to="." method="_on_maximum_framerate_spin_box_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Apply Settings Button" to="." method="_on_apply_settings_button_pressed"]
+[connection signal="timeout" from="RevertTimer" to="." method="_on_revert_timer_timeout"]
+[connection signal="pressed" from="SettingsAppliedPanel/VBoxContainer/HBoxContainer/Keep Changes Button" to="." method="_on_keep_changes_button_pressed"]
+[connection signal="toggled" from="SettingsAppliedPanel/VBoxContainer/HBoxContainer/Keep Changes Button" to="." method="_on_keep_changes_button_toggled"]
+[connection signal="pressed" from="SettingsAppliedPanel/VBoxContainer/HBoxContainer/Revert Button" to="." method="_on_revert_button_pressed"]

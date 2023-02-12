@@ -17,15 +17,14 @@ func _on_options_pressed():
 
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://scenes/levels/tutorial_level.tscn")
+	get_tree().call_group("Main Menu", "resume")
 	pass # Replace with function body.
 
 
-#func _on_quit_to_menu_pressed():
-#	get_tree().call_group("Main Menu", "switch_to_main_menu")
-#	pass # Replace with function body.
-
-
-func _on_quit_pressed():
-	get_tree().quit()
+func _on_quit_to_menu_pressed():
+	get_tree().call_group("Main Menu", "quit_to_main_menu")
 	pass # Replace with function body.
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		get_tree().call_group("Main Menu", "resume")

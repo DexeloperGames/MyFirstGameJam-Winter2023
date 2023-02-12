@@ -44,7 +44,7 @@ func spawn_hit_text(facing_position = Vector3.ZERO):
 	(new_hit_text as Node3D).look_at(facing_position)
 
 func hit(thing):
-	print("Particle hit by ", thing)
+#	print("Particle hit by ", thing)
 	var facing = Vector3.ZERO
 	if thing is LazerGun:
 		if thing.wielder is Player:

@@ -1,6 +1,7 @@
 extends Node3D
 class_name GimbalCamera
 
+@onready var camera : Camera3D = get_node("Yaw/Pitch/Roll/Camera3D")
 
 @export var gimbal_rotation_degrees : Vector3 = Vector3.ZERO:
 	set(n_degrees):
