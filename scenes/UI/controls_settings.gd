@@ -32,7 +32,7 @@ func _on_spin_box_value_changed(value):
 	if current_updated_control_node == mouse_sensitivity_spinbox:
 		update_mouse_sensitivity(value)
 		mouse_sensitivity_slider.value = convert_sensitivity_to_percent(value)
-		Globals.Settings.save("res://testsettings.tres")
+		Globals.Settings.save()
 	pass # Replace with function body.
 
 
@@ -64,17 +64,17 @@ func _on_spin_box_gui_input(event):
 
 
 func _on_h_slider_drag_ended(value_changed):
-	Globals.Settings.save("res://testsettings.tres")
+	Globals.Settings.save()
 	pass # Replace with function body.
 
 
 func _on_invert_x_checkbox_toggled(button_pressed):
 	(Globals.Settings as SettingsResource).Controls.MouseInvertX = button_pressed
-	Globals.Settings.save("res://testsettings.tres")
+	Globals.Settings.save()
 	pass # Replace with function body.
 
 
 func _on_invert_y_checkbox_toggled(button_pressed):
 	(Globals.Settings as SettingsResource).Controls.MouseInvertY = button_pressed
-	Globals.Settings.save("res://testsettings.tres")
+	Globals.Settings.save()
 	pass # Replace with function body.

@@ -17,6 +17,7 @@ class_name Player
 		$UI.score = score
 
 @export var pause_screen : PackedScene = preload("res://scenes/UI/pause_menu.tscn")
+@export var level_finished : PackedScene = preload("res://scenes/UI/win_screen.tscn")
 var dashing : bool = false
 var dash_amount : float = 1.0
 var pre_dash_velocity : Vector3 = Vector3.ZERO
@@ -29,6 +30,17 @@ var previous_position = Vector3.ZERO
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")*3
 
+func trigger_win():
+	return
+	var win_screen = level_finished.instantiate()
+	add_child(win_screen)
+	win_screen.score = score
+	
+	win_screen.time = $UI.timer_time/1.0e+6
+	win_screen.update_display
+	
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _physics_process(delta):
 	# Add the gravity.

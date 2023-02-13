@@ -28,3 +28,9 @@ func _on_quit_to_menu_pressed():
 func _input(event):
 	if event.is_action_pressed("pause"):
 		get_tree().call_group("Main Menu", "resume")
+
+
+func _on_retry_pressed():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+	pass # Replace with function body.

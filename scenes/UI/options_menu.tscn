@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://wb2cpoh2bogr"]
+[gd_scene load_steps=8 format=3 uid="uid://wb2cpoh2bogr"]
 
 [ext_resource type="Script" path="res://scenes/UI/options_menu.gd" id="1_5h4bl"]
 [ext_resource type="PackedScene" uid="uid://bj4r0dwh75vms" path="res://scenes/UI/colors_settings.tscn" id="1_b5o6c"]
 [ext_resource type="PackedScene" uid="uid://ci1n7rtuxnlxn" path="res://scenes/UI/controls_settings.tscn" id="2_1s4vg"]
 [ext_resource type="PackedScene" uid="uid://by83pqcnpttsa" path="res://scenes/UI/video_settings.tscn" id="2_m4tfx"]
 [ext_resource type="PackedScene" uid="uid://c46fg85vrnxp8" path="res://scenes/UI/audio_settings.tscn" id="3_s6cf0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tmdlp"]
+font_size = 39
+
+[sub_resource type="LabelSettings" id="LabelSettings_otahx"]
+font_size = 27
 
 [node name="Options Menu" type="Control"]
 layout_mode = 3
@@ -33,6 +39,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Colors" type="Control" parent="VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Colors Settings" parent="VBoxContainer/TabContainer/Colors" instance=ExtResource("1_b5o6c")]
@@ -58,5 +65,192 @@ layout_mode = 2
 
 [node name="controls_settings" parent="VBoxContainer/TabContainer/Controls" instance=ExtResource("2_1s4vg")]
 layout_mode = 1
+
+[node name="Credits" type="Control" parent="VBoxContainer/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Credits"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+text = "Primitive Hunters"
+label_settings = SubResource("LabelSettings_tmdlp")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+text = "by Dexel"
+label_settings = SubResource("LabelSettings_otahx")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_otahx")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Programming"
+label_settings = SubResource("LabelSettings_otahx")
+horizontal_alignment = 2
+
+[node name="Control3" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.18
+
+[node name="Label4" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dexel"
+label_settings = SubResource("LabelSettings_otahx")
+
+[node name="Control" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Game Design"
+label_settings = SubResource("LabelSettings_otahx")
+horizontal_alignment = 2
+
+[node name="Control3" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.18
+
+[node name="Label4" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dexel"
+label_settings = SubResource("LabelSettings_otahx")
+
+[node name="Control" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level Desing"
+label_settings = SubResource("LabelSettings_otahx")
+horizontal_alignment = 2
+
+[node name="Control3" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.18
+
+[node name="Label4" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dexel"
+label_settings = SubResource("LabelSettings_otahx")
+
+[node name="Control" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3D Artist"
+label_settings = SubResource("LabelSettings_otahx")
+horizontal_alignment = 2
+
+[node name="Control3" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.18
+
+[node name="Label4" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dexel"
+label_settings = SubResource("LabelSettings_otahx")
+
+[node name="Control" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Technical Artist"
+label_settings = SubResource("LabelSettings_otahx")
+horizontal_alignment = 2
+
+[node name="Control3" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.18
+
+[node name="Label4" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dexel"
+label_settings = SubResource("LabelSettings_otahx")
+
+[node name="Control" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="VBoxContainer/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label4" type="Label" parent="VBoxContainer/TabContainer/Credits/VBoxContainer"]
+layout_mode = 2
+text = "
+
+Audio provided by opengameart.org
+all rights reserved
+© The 1800's-2023"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

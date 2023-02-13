@@ -142,7 +142,7 @@ func _on_mouse_entered():
 func _on_visibility_changed():
 	if visible:
 		print("i am see")
-		Globals.Settings.save("res://revertable_settings.tres")
+		Globals.Settings.save("user://revertable_settings.tres")
 	pass # Replace with function body.
 
 func revert_settings():

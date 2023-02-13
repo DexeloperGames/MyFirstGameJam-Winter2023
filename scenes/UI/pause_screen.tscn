@@ -45,6 +45,12 @@ theme_override_fonts/font = ExtResource("2_7o0qs")
 theme_override_font_sizes/font_size = 92
 text = "RESUME"
 
+[node name="Retry" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7o0qs")
+theme_override_font_sizes/font_size = 92
+text = "RETRY"
+
 [node name="Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_7o0qs")
@@ -58,5 +64,6 @@ theme_override_font_sizes/font_size = 92
 text = "QUIT TO MENU"
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit to Menu" to="." method="_on_quit_to_menu_pressed"]

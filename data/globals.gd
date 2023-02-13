@@ -1,7 +1,7 @@
 extends Node
 
 var Settings = SettingsResource.new()
-var SettingsPath = "res://testsettings.tres"
+var SettingsPath = "user://testsettings.tres"
 var preloads : Array
 var concrete_material : ShaderMaterial = preload("res://scenes/levels/concrete_material.tres")
 var procedual_concrete_shader : Shader = preload("res://scenes/levels/procedual_concretefr.tres")

@@ -56,5 +56,5 @@ func _on_primitive_5_color_picker_color_changed(color):
 
 func _on_primitive_color_picker_popup_closed():
 	print("yup thing closed indeed")
-	Globals.Settings.save("res://testsettings.tres")
+	Globals.Settings.save()
 	pass # Replace with function body.
